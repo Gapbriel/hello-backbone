@@ -25,11 +25,11 @@ body{
 	
 }
 
-input[type="text"], textarea{
+input[type="number"],input[type="text"], textarea{
 	border:none;
 	width: 250px;
 }
-input[type="text"]{
+input[type="number"],input[type="text"]{
 	border-bottom: 1px solid #ccc;
 }
 input[type="button"], input[type="reset"]{
@@ -58,4 +58,23 @@ textarea{
     -moz-border-radius: 3px;
     border-radius: 3px;
     border: 1px solid #ccc;
+}
+
+.containerMovies {
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #49a5bf;
+	color: #FFF;
+	width: 600px;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border:1px solid #CCC;
+    padding: 5px;
+
+}
+
+.containerMovies li{
+	list-style:none;
 }

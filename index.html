@@ -8,20 +8,29 @@
 </head>
 <body>
 
-	
-	  	<div id="movies" class="form">
-			<form action="">
-				<div><label>título:</label><input type="text" id="title" name="title" value="" required></div>
-				<div><label>genero:</label><input type="text" id="genre" name="genre" required></div>
-				<div><label>duración:</label><input type="number" id="duration" name="duration" required></div>
+	  	<div  class="form">
+			<form id="movies" action="">
+				<div><label>título:</label><input class="data" type="text" id="title" name="title" value="" required>
+				<div><label>genero:</label><input class="data" type="text" id="genre" name="genre" required>
+				<div><label>duración:</label><input class="data" type="number" id="duration" name="duration" required></div>
 				<div>
 					<label>sinopsis</label>
-					<div class="divArea"><textarea id="sinopsis" name="sinopsis" required></textarea></div>
+					<div class="divArea"><textarea class="data" id="sinopsis" name="sinopsis" required></textarea></div>
 				</div>
 				<input type="button" value="cargar" id="add">
 				<input type="reset" value="cancelar" id="cancel">
 			</form>
 		</div>
+
+		<script id="moviesList" type="text/template">
+		    <ul>
+		        <li><%= title%></li>
+		        <li><%= genre%></li>
+		        <li><%= duration %></li>
+		        <li><%= sinopsis %></li>
+		    </ul>
+		    <input type="button"  class="delete" value="Delete">
+		</script>
 	
 
 </body>

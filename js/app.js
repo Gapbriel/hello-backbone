@@ -8,88 +8,121 @@ define([
   
 
   var initialize = function(){
-     
-    var Movie = Backbone.Model.extend({
-        defaults:{            
-            titulo:"Vacio",
-            duracion:0,
-            genero:"Vacio",
-            sinopsis:"Vacio"
-        }
+
+      var Film = Backbone.Model.extend({
+          
+          defaults:{            
+              title:"Vacio",
+              genre:"Vacio",
+              duration:0,
+              sinopsis:"Vacio"
+          
+          }
+        
       });
 
-    var Movies = Backbone.Collection.extend({
-        model: Movie
-    }); 
+      var Movies = Backbone.Collection.extend({
+          model: Film
+      }); 
 
       var MovieView = Backbone.View.extend({
           tagName:"div",
-          className:"form",
-          template:$("#movies").html(),// cambiar el id en index.html
+          className:"containerMovies",
+          template:$("#moviesList").html(),
 
           render:function () {
+              
               var tmpl = _.template(this.template); //tmp toma Json y retorna HTML
 
+              
               this.$el.html(tmpl(this.model.toJSON()));
+              
               return this;
+          
           },
 
           events: {
+              
               "click .delete": "deleteMovie"
+          
           },
 
-          deleteBook:function () {
-              //Delete model
+          deleteMovie:function () {
+              
               this.model.destroy();
-
-              //Delete view
+              
               this.remove();
+          
           }
+      
       });
 
       var MoviesView = Backbone.View.extend({
-          el:$("#movies"),
+          
+          el:$("body"),
 
           initialize:function(){
-            this.collection= new Movies(movies);
-            this.render();
+          
+            this.collection = new Movies();
+
+            this.collection.on("add", this.renderMovie, this);
+          
           },
 
           render:function(){
+          
             var that = this;
+          
             _.each(this.collection.models, function(item){
+
               that.renderMovie(item);
+            
             });
+          
           },
 
           events:{
+            
             "click #add":"addMovie"
+         
           },
 
           addMovie: function(e){
+
             e.preventDefault();
 
             var formData = {};
 
-            $("#addMovie div").children("input").each(function (i, el) {
+            $("#movies .data").each(function (i, el) {
+
                 if ($(el).val() !== "") {
+             
                     formData[el.id] = $(el).val();
+             
                 }
+            
             });
-
-            movies.push(formData);
-
-            this.collection.add(new Movie(formData));    
+            
+            $('#cancel').click();
+            
+            this.collection.add(new Film(formData));   
+         
           },
 
           renderMovie:function(item){
+              
               var movieView = new MovieView ({
+              
                 model: item
+              
               });
+              
               this.$el.append(movieView.render().el);
+          
           }
       });
      
+      var newMovie = new MoviesView();
   };
 
   return { 
