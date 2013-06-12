@@ -3,9 +3,26 @@
 <head>
  <meta charset="UTF-8">
  <title>Video List - Backbone and RequireJS</title>
+ <link rel="stylesheet" href="css/style.css">
  <script data-main="js/main" src="js/libs/require/require.js"></script>
 </head>
 <body>
- 
+
+	<script id="videoTemplate" type="text/template">
+	  	<div class="form">
+			<form action="">
+				<div><label>título:</label><input type="text" id="titulo" name="titulo" value=""></div>
+				<div><label>genero:</label><input type="text" id="genero" name="genero"></div>
+				<div><label>duración:</label><input type="text" id="duracion" name="duracion"></div>
+				<div>
+					<label>sinopsis</label>
+					<div class="divArea"><textarea id="sinopsis" name="sinopsis"></textarea></div>
+				</div>
+				<input type="button" value="cargar" id="cargar">
+				<input type="reset" value="cancelar" id="cancelar">
+			</form>
+		</div>
+	</script>
+
 </body>
 </html>
