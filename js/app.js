@@ -18,10 +18,14 @@ define([
         }
       });
 
+    var Movies = Backbone.Collection.extend({
+        model: Movie
+    }); 
+
       var MovieView = Backbone.View.extend({
           tagName:"div",
           className:"form",
-          template:$("#moviesTmp").html(),// cambiar el id en index.html
+          template:$("#movies").html(),// cambiar el id en index.html
 
           render:function () {
               var tmpl = _.template(this.template); //tmp toma Json y retorna HTML
@@ -43,7 +47,28 @@ define([
           }
       });
 
+      var MoviesView = Backbone.View.extend({
+          el:$("#movies"),
 
+          initialize:function(){
+            this.collection= new Movies(movies);
+            this.render();
+          },
+
+          render:function(){
+            var that = this;
+            _.(this.collection.models, function(item){
+              that.renderMovie(item);
+            });
+          },
+
+          renderMovie:function(item){
+              var movieView = new MovieView ({
+                model: item
+              });
+              this.$el.append(movieView.render().el);
+          }
+      });
      
   };
 
