@@ -57,7 +57,7 @@ define([
 
           render:function(){
             var that = this;
-            _.(this.collection.models, function(item){
+            _.each(this.collection.models, function(item){
               that.renderMovie(item);
             });
           },
@@ -80,7 +80,7 @@ define([
             movies.push(formData);
 
             this.collection.add(new Movie(formData));    
-          }
+          },
 
           renderMovie:function(item){
               var movieView = new MovieView ({
