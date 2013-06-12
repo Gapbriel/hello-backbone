@@ -62,6 +62,26 @@ define([
             });
           },
 
+          events:{
+            "click #add":"addMovie"
+          },
+
+          addMovie: function(e){
+            e.preventDefault();
+
+            var formData = {};
+
+            $("#addMovie div").children("input").each(function (i, el) {
+                if ($(el).val() !== "") {
+                    formData[el.id] = $(el).val();
+                }
+            });
+
+            movies.push(formData);
+
+            this.collection.add(new Movie(formData));    
+          }
+
           renderMovie:function(item){
               var movieView = new MovieView ({
                 model: item
