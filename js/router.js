@@ -4,7 +4,7 @@ define(['jquery',
 	    'views/formMovie',
 	    'views/listMovies'
 ], function($, _, Backbone, FormMovie, ListMovie){
-	
+
 	var AppRouter = Backbone.Router.extend({
 		
 		routes: {
@@ -23,15 +23,15 @@ define(['jquery',
 		
 		var app_router = new AppRouter;
 
-		app_router.on('ShowFormMovie',function () {
-
+		app_router.on('route:ShowFormMovie',function () {
+			
 			var formMovieView = new FormMovie ();
 			
 			formMovieView.render();
 
 		});
 
-		app_router.on('ShowListMovie', function () {
+		app_router.on('route:ShowListMovie', function () {
 
 			var listMovie = new ListMovie();
 
@@ -39,10 +39,12 @@ define(['jquery',
 		
 		});
 		
-		app_router.on('defaultAction', function(){
+		app_router.on('route:defaultAction', function(actions){
 
 			console.log('No route:', actions);
+		
 		});
+
 
 		Backbone.history.start();
 
@@ -51,8 +53,8 @@ define(['jquery',
 
 	return {
 	
-		initialize : initialize
-	
+		initialize: initialize
+			
 	};
 
 });
