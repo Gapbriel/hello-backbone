@@ -3,7 +3,7 @@ define([
   'underscore', 
   'backbone',
   'router'
-], function($, _, Backbone, Router){//$, _, 
+], function($, _, Backbone, Router){
 
   var initialize = function(){
 

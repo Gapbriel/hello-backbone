@@ -1,16 +1,16 @@
 define( [
 	'jquery',
 	'underscore',
-	'backbone',
-	'text!templates/formMovie.html'
-	],	function($, _, Backbone, formViewTemplate) {
+	'backbone'
+	],	function($, _, Backbone) {
 
 	var FormMovieView = Backbone.View.extend({
           
           el:$("#containerForm"),
 
           render:function(){
-          	///var data = {}; NO LE PASO NINGUNA DATA
+            
+            var formViewTemplate = require('text!templates/formMovie.html');
 
           	var compiledTemplate = _.template( formViewTemplate );
           	
