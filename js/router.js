@@ -7,7 +7,7 @@ define(['jquery',
 	
 	var AppRouter = Backbone.Router.extend({
 		
-		routers: {
+		routes: {
 
 			"/formMovie" : "ShowFormMovie",
 
