@@ -7,7 +7,7 @@ define([
 				title:'',
 				genre:'',
 				duration:'',
-				sinopsis:'',
+				sinopsis:''
 			}
 		});
 		// return the model for the module

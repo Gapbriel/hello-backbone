@@ -6,11 +6,17 @@ define([
 	'text!templates/listsMovies.html'
 	], function($, _, Backbone, Movies, MovieListTemplate, Movie){
 		var MovieListView = Backbone.View.extend({
-			el: $('movieList'),
-			initialize: function(){
-				this.collection = new Movies();
-				
-			}
+			el: $('#movieList'),
+			render:function(){
+          	///var data = {}; NO LE PASO NINGUNA DATA
 
-		})
-	})
+          	var compiledTemplate = _.template( MovieListTemplate );
+          	
+          	this.$el.append( compiledTemplate );
+
+          }
+
+		});
+
+		return MovieListView;
+});
