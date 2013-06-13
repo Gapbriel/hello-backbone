@@ -1,9 +1,11 @@
 require.config({
+  baseUrl: "js",
   paths: {
     jquery: 'libs/jquery/jquery-min',
     underscore: 'libs/underscore/underscore-min',
     backbone: 'libs/backbone/backbone-min',
-    backboneLocalStorage: 'libs/backbonelocalStorage/backbone.localStorage'
+    backboneLocalStorage: 'libs/backbonelocalStorage/backbone.localStorage',
+    templates: 'js/templates'
   }
 
 });
