@@ -7,7 +7,7 @@ define( [
 
 	var FormMovieView = Backbone.View.extend({
           
-          el:$(".form"),
+          el:$("#containerForm"),
 
           render:function(){
           	///var data = {}; NO LE PASO NINGUNA DATA
