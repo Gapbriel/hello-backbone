@@ -4,6 +4,10 @@ body{
 	font-family:Arial, 'Liberation Sans', 'DejaVu Sans', sans-serif;
 }
 
+h1{
+	color: black;
+	text-align: center;
+}
 
 .form{
 	padding: 12px;
