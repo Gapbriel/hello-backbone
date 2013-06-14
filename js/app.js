@@ -7,11 +7,13 @@ define([
 
   var initialize = function(){
 
-    Router.initialize();
+    Router.initialize('formMovie');
 
   };
 
   return { 
+
     initialize: initialize
+    
   };
 });

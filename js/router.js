@@ -9,11 +9,9 @@ define(['jquery',
 		
 		routes: {
 
-			"/formMovie" : "ShowFormMovie",
+			"listMovies" : "ShowListMovie",
 
-			"/listMovies" : "ShowListMovie",
-
-			"*actions"  : 'defaultAction'
+			"*actions"  : "defaultAction"
 
 		}
 
@@ -21,28 +19,42 @@ define(['jquery',
 
 	var initialize = function(){
 		
-		var app_router = new AppRouter;
+		var app_router = new AppRouter,
+		formMovieView = new FormMovie (),
+		listMovie = new ListMovie(),
+		currentView;
 
-		app_router.on('route:ShowFormMovie',function () {
-			
-			var formMovieView = new FormMovie ();
-			
+		/*app_router.on('route:ShowFormMovie',function () {
+		
 			formMovieView.render();
 
-		});
+		});*/
 
 		app_router.on('route:ShowListMovie', function () {
+			if( currentView )
+			{			
+				currentView.remove();			
+			}
 
-			var listMovie = new ListMovie();
+			currentView = listMovie;
 
-			listMovie.render();
+			//listMovie.render();
+			currentView.render().$el.before("#formContainer")
 		
 		});
 		
 		app_router.on('route:defaultAction', function(actions){
+			
+			console.log("no action :", actions);
 
-			console.log('No route:', actions);
-		
+			formMovieView.fetch().complete(function(){
+	              
+	              currentView.collection = formMovieView;
+	              
+	              currentView.render().$el.append("#formContainer");
+	        
+	        });
+
 		});
 
 
