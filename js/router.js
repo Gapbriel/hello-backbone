@@ -46,14 +46,12 @@ define(['jquery',
 		app_router.on('route:defaultAction', function(actions){
 			
 			console.log("no action :", actions);
-
-			formMovieView.fetch().complete(function(){
+			//formMovieView.fetch().complete(function(){
 	              
-	              currentView.collection = formMovieView;
-	              
-	              currentView.render().$el.append("#formContainer");
+	             // currentView.collection = formMovieView;
+	              formMovieView.render();
 	        
-	        });
+	       // });
 
 		});
 
