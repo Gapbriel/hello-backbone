@@ -36,7 +36,7 @@ input[type="number"],input[type="text"], textarea{
 input[type="number"],input[type="text"]{
 	border-bottom: 1px solid #ccc;
 }
-input[type="button"], input[type="reset"]{
+.button{
 	-webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -45,8 +45,11 @@ input[type="button"], input[type="reset"]{
     padding: 2px 8px 3px 8px;
     color: #FFF;
     font-size: 14px;
+    text-transform: capitalize;
+    text-decoration: none;
+
 }
-input[type="button"]:hover, input[type="reset"]:hover{
+.button:hover{
 	color: #CCC;
 	background-color: #666;
 }

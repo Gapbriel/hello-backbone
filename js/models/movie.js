@@ -4,15 +4,20 @@ define([
 	], function(_, Backbone){
 		var Movie = Backbone.Model.extend({
 			defaults:{
-				title:'hola mundo',
-				genre:'asd',
-				duration:'50',
-				sinopsis:'adasd'
+				id:0,
+				title:'',
+				genre:'',
+				duration:'',
+				sinopsis:''
 			},
 
-			/*validate: function() {
-				if(attrs.)
-			},*/
+			validate: function() {
+				
+				if( isNaN( this.duration ) ){				
+					console.log('el campo duration no es numerico');				
+				}
+			
+			},
 
 			initialize: function () {
 				/*this.on("invalid",function ( model, error ) {
