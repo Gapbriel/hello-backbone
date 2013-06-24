@@ -12,15 +12,31 @@ define( function( require ){
                   this.formView = new FormView;
                   this.listView = new ListView;
             },
+            
+            EditMovie: function () {
+            	
+            	$.each(this.model.attributes, function (key, val) {            	
+            		$('#'+key).val(val);
+            	});
+
+            	$('#formContainer').find('input[type=text]').filter(':first').focus();
+            	
+            },
+            
 
             ShowFormView: function (){
-            	//necesito pisar el formulario
             	$('#formContainer').html(this.formView.render().$el);
 				
 			},
 
-			ShowListView: function (){
+			ShowListView: function (reLoad){
 				//necesito agregar a la lista, otra manera de cargar el elemento en el DOM
+				//console.log('mainView ',this.collection);
+				this.listView.collectionMovies = this.collection;
+
+				if(reLoad)//no esta bien implementado, debería elminarse al elminar el registro del modelo.
+					this.listView.render().$el.html('');
+
 				this.listView.render().$el.appendTo('#movieList');
 
 			}

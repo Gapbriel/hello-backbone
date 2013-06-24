@@ -1,10 +1,14 @@
+<% _.each(movies, function(item) { %> 
 <div class="containerMovies">
+	
 <ul>	
-	<li><%= title%></li>
-	<li><%= genre%></li>
-	<li><%= duration %></li>
-	<li><%= sinopsis %></li>
+	<li><%= item.title%></li>
+	<li><%= item.genre%></li>
+	<li><%= item.duration %></li>
+	<li><%= item.sinopsis %></li>
 </ul>
-<a href="delete/<%= id%>" class="button">eliminar</a>
-<a href="edit/<%= id%>" class="button">editar</a>
+
+<a href="/#delete/<%= item.id %>" class="button">eliminar</a>
+<a href="/#edit/<%= item.id %>" class="button">editar</a>
 </div>
+<% }); %>

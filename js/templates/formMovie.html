@@ -1,18 +1,21 @@
 <form id="movies" action="">
-	<input type="hidden" id="id" name="id" value="" required  >
+		<input type="hidden" class="data" id="id" name="id" value="" required  >
 	<div>
-		<label>título:</label><input class="data" type="text" id="title" name="title" value="" required  >
+		<label>título:</label>
+		<input class="data" type="text" id="title" name="title" value="" required  >
 	</div>	
 	<div>
-		<label>genero:</label><input class="data" type="text" id="genre" name="genre" required>
+		<label>genero:</label>
+		<input class="data" type="text" id="genre" name="genre" value="" required>
 	</div>	
 	<div>
-		<label>duración:</label><input class="data" type="number" id="duration" name="duration" required>
+		<label>duración:</label>
+		<input class="data" type="number" id="duration" name="duration" value="" required>
 	</div>
 	<div>
 		<label>sinopsis</label>
 		<div class="divArea"><textarea class="data" id="sinopsis" name="sinopsis" required></textarea></div>
 	</div>
-	<input type="button" class="button" value="cargar" id="add">
-	<input type="reset" class="button" value="cancelar" id="cancel">
+	<input type="button" class="button submit" value="cargar" >
+	<input type="button" class="button cancel" value="cancelar" >
 </form>

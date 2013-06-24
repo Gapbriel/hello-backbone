@@ -7,26 +7,28 @@ define([
 				id:0,
 				title:'',
 				genre:'',
-				duration:'',
+				duration:0,
 				sinopsis:''
 			},
 
-			validate: function() {
+			/*validate: function() {
 				
 				if( isNaN( this.duration ) ){				
-					console.log('el campo duration no es numerico');				
+					console.log('el campo duration no es numerico');		
+					return 'el campo duration no es numerico';		
 				}
 			
-			},
+			},*/
 
 			initialize: function () {
-				/*this.on("invalid",function ( model, error ) {
-
-					console.log('modelo: ',model,' error: ', error);
-
-				})*/
+				/* No sirve porque cambia el cid por el id pero en el dom ya existe el id no el cid.
+				this.on("add", function(){
+						//var title = this.get("title");
+						this.id = this.cid;
+						console.log(this);
+				});*/
 			
-				//console.log(attrs.title);
+				
 			}
 		});
 		// return the model for the module

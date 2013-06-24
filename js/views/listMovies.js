@@ -8,11 +8,22 @@ define([
 		
 		var MovieListView = Backbone.View.extend({
 			
-			render:function(data){
+			render:function(){
+
+				var compiledTemplate = _.template( Template);
+                
+                //recorro la collecion y cargo los datos en el template
+                //dos maneras distintas, en esta el each dentro de la view
+                /*_.each(this.collectionMovies.models, function(item){
+	                
+	               this.$el.append( compiledTemplate( item.attributes ) );
+
+	            }, this);*/
+				//en este caso el each esta dentro del template
 				
-				var compiledTemplate = _.template( Template );
-            
-	          	this.$el.append( compiledTemplate );
+				this.$el.append(compiledTemplate({
+	                movies: this.collectionMovies.toJSON()
+	            }));
 	            
 	            return this;
             }
