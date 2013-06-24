@@ -42,8 +42,18 @@ define(['jquery',
 			mainView.EditMovie();
 		});
 
-		//app_router.on( 'route:defaultAction', function( actions ){
-		//});	
+		app_router.on( 'route:defaultAction', function( actions ){
+			mainView.ShowFormView();//muestra el template del formulario
+       
+        //listMovies.fetch().complete( function () {		       		
+        	mainView.collection = listMovies;
+        	mainView.ShowListView();//carga el template con todas las pelilculas existentes
+        //});	
+
+		Backbone.history.start();
+
+			
+		});	
         
         
        
@@ -66,15 +76,7 @@ define(['jquery',
     	listMovies.add(arr);
 	    	
        
-       mainView.ShowFormView();//muestra el template del formulario
        
-        //listMovies.fetch().complete( function () {		       		
-        	mainView.collection = listMovies;
-        	mainView.ShowListView();//carga el template con todas las pelilculas existentes
-        //});	
-
-		Backbone.history.start();
-
 	};
 	
 
