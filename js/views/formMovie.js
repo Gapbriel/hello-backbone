@@ -2,9 +2,8 @@ define( [
 	'jquery',
 	'underscore',
 	'backbone',
-  'text!templates/formMovie.html',
-  'models/movie'
-	],	function( $, _, Backbone, Template, ModelMovie) {
+  'text!templates/formMovie.html'
+	],	function( $, _, Backbone, Template) {
       
     	var FormMovieView = Backbone.View.extend({   
            
@@ -23,10 +22,10 @@ define( [
 
           events: {
             "click .cancel" : "cleanFormMovie",
-            "click .submit" : "addFormMovie"
+            //"click .submit" : "addFormMovie"
           },
 
-          addFormMovie: function () {
+          /*addFormMovie: function () {
             
             if( $('.submit').val() === 'editar' ){
 
@@ -48,10 +47,11 @@ define( [
             this.cleanFormMovie();
           },
 
+          */
           cleanFormMovie: function (){  
               this.$el.find('.data').val('');
               this.$el.find('.submit').val('cargar');
-          },
+          }
       });
 
     	return FormMovieView;

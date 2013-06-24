@@ -11,8 +11,6 @@ define( function( require ){
             {            	
                   this.formView = new FormView;
                   this.listView = new ListView;
-
-                  
             },
 
 

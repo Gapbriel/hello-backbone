@@ -13,12 +13,30 @@ define(['jquery',
 
 			"delete/:id" : "deleteMovie",//elimina desde la coleccion
 			"edit/:id"   : "editMovie",//edita desde mains
-			"add/":"addMovie",
+			"addMovie":"addMovie",
 			"*actions"   : "defaultAction"
 
 		},
 
 	}); 
+
+	var arr = [{ id:1,
+        			title:"rambo",
+    			    duration:62,
+    				genre:"accion",
+    				sinopsis:"un militar...mata a todos."}, 
+    				{id:2,
+        			title:"rambo II",
+    			    duration:70,
+    				genre:"accion",
+    				sinopsis:"un militar...mata a todos."},
+    				{id:3,
+        			title:"rambo III",
+    			    duration:82,
+    				genre:"accion",
+    				sinopsis:"un militar...mata a todos."}
+    				];
+    listMovies.add(arr);
 
 	var initialize = function(){
 		
@@ -27,6 +45,29 @@ define(['jquery',
 
 		app_router.on('route:addMovie', function () {
 
+			
+			if($('#id').val() != "" ){
+			  
+              listMovies.get($('#id').val()).attributes.title = $('#title').val();
+              listMovies.get($('#id').val()).attributes.genre = $('#genre').val();
+              listMovies.get($('#id').val()).attributes.sinopsis = $('#sinopsis').val();
+              listMovies.get($('#id').val()).attributes.duration = $('#duration').val();
+              
+             
+            }else{
+            	
+               listMovies.add({title : $('#title').val(),
+                                genre : $('#genre').val(),
+                                sinopsis : $('#sinopsis').val(),
+                                duration : $('#duration').val()
+                              });
+            	mainView.coleccion = listMovies;
+
+            } 
+            //falta el save para persistir los datos.  
+             //listMovies.save();
+            mainView.ShowListView(true);       
+            $('.cancel').click();
 		});
 		
 		
@@ -43,26 +84,8 @@ define(['jquery',
 		});
 
 		app_router.on( 'route:defaultAction', function( actions ){
-			
+			console.log('entro en defaultAction');
 			mainView.ShowFormView();//muestra el template del formulario
-       		
-			var arr = [{ id:1,
-        			title:"rambo",
-    			    duration:62,
-    				genre:"accion",
-    				sinopsis:"un militar...mata a todos."}, 
-    				{id:2,
-        			title:"rambo II",
-    			    duration:70,
-    				genre:"accion",
-    				sinopsis:"un militar...mata a todos."},
-    				{id:3,
-        			title:"rambo III",
-    			    duration:82,
-    				genre:"accion",
-    				sinopsis:"un militar...mata a todos."}
-    				];
-    		listMovies.add(arr);
 
         	//listMovies.fetch().complete( function () {		       		
         	mainView.collection = listMovies;
