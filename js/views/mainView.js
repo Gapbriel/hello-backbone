@@ -3,7 +3,7 @@ define( function( require ){
 	// Router y las distintas views de la app.
 
 	var FormView = require('views/formMovie'),
-		ListView = require('views/listMovies');//probando distintas formas de define signature REQUIRE
+	     ListView = require('views/listMovies');//probando distintas formas de define signature REQUIRE
 
 	var MainView = Backbone.View.extend({
             

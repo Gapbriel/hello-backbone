@@ -2,8 +2,9 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'models/movie',
 	'text!templates/listsMovies.html'
-	], function( $, _, Backbone, Template ){
+	], function($,_, Backbone, Movie,Template){
 		
 		
 		var MovieListView = Backbone.View.extend({

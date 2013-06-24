@@ -1,10 +1,10 @@
 define( [
 	'jquery',
-	'underscore',
-	'backbone',
+  'underscore',
+  'backbone',
   'text!templates/formMovie.html'
-	],	function( $, _, Backbone, Template) {
-      
+	], function( $, _, Backbone, Template) {
+
     	var FormMovieView = Backbone.View.extend({   
            
           initialize: function (){

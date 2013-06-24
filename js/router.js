@@ -44,7 +44,7 @@ define(['jquery',
 		mainView = new MainView;
 
 		app_router.on('route:addMovie', function () {
-
+			console.log('entreo en addMovie');
 			
 			if($('#id').val() != "" ){
 			  
@@ -61,8 +61,9 @@ define(['jquery',
                                 sinopsis : $('#sinopsis').val(),
                                 duration : $('#duration').val()
                               });
-            	mainView.coleccion = listMovies;
 
+            	mainView.collection = listMovies;
+            	console.log(mainView.collection);
             } 
             //falta el save para persistir los datos.  
              //listMovies.save();
@@ -84,7 +85,7 @@ define(['jquery',
 		});
 
 		app_router.on( 'route:defaultAction', function( actions ){
-			console.log('entro en defaultAction');
+			
 			mainView.ShowFormView();//muestra el template del formulario
 
         	//listMovies.fetch().complete( function () {		       		
