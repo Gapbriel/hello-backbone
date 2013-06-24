@@ -14,15 +14,18 @@ define( function( require ){
             },
             
             EditMovie: function () {
-            	
+            	$('.submit').val('editar');
+            	this.formView.modelMovie = this.model;
+
             	$.each(this.model.attributes, function (key, val) {            	
             		$('#'+key).val(val);
             	});
 
             	$('#formContainer').find('input[type=text]').filter(':first').focus();
+
             	
             },
-            
+
 
             ShowFormView: function (){
             	$('#formContainer').html(this.formView.render().$el);

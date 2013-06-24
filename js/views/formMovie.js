@@ -6,12 +6,10 @@ define( [
   'models/movie'
 	],	function( $, _, Backbone, Template, ModelMovie) {
       
-      
-
     	var FormMovieView = Backbone.View.extend({   
            
           initialize: function (){
-              _.bindAll(this, "render", "addFormMovie");
+              //_.bindAll(this, "render", "addFormMovie");
 
           },
 
@@ -28,16 +26,28 @@ define( [
             "click .submit" : "addFormMovie"
           },
 
-          addFormMovie: function (arg) {
-           /* var modelView = new ModelMovie;
-            //console.log('toco en cargar', this.$el.find('.data'));
-            $.each(this.$el, function ( key, val) {
+          addFormMovie: function () {
+            var that = this;
+            console.log('modelo', that.modelMovie);
+            
+            if( $('.submit').val() === 'editar' ){
 
-             // modelView.set({key:val});
-             console.log('key ', key, ' valor: ', val);
+              that.modelMovie.attributes.title = $('#title').val();
+              that.modelMovie.attributes.genre = $('#genre').val();
+              that.modelMovie.attributes.sinopsis = $('#sinopsis').val();
+              that.modelMovie.attributes.duration = $('#duration').val();
 
-            });*/
-            //console.log('modelo ', modelView);
+            }else{
+            
+               that.modelMovie.add({title : $('#title').val(),
+                                    genre : $('#genre').val(),
+                                    sinopsis : $('#sinopsis').val(),
+                                    duration : $('#duration').val()
+                                  });
+            
+            } 
+            //falta el save para persistir los datos.
+            console.log('modelo modificado', that.modelMovie);
           },
 
           cleanFormMovie: function (){              
