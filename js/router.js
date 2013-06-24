@@ -43,21 +43,10 @@ define(['jquery',
 		});
 
 		app_router.on( 'route:defaultAction', function( actions ){
-			mainView.ShowFormView();//muestra el template del formulario
-       
-        //listMovies.fetch().complete( function () {		       		
-        	mainView.collection = listMovies;
-        	mainView.ShowListView();//carga el template con todas las pelilculas existentes
-        //});	
-
-		Backbone.history.start();
-
 			
-		});	
-        
-        
-       
-        var arr = [{ id:1,
+			mainView.ShowFormView();//muestra el template del formulario
+       		
+			var arr = [{ id:1,
         			title:"rambo",
     			    duration:62,
     				genre:"accion",
@@ -73,9 +62,16 @@ define(['jquery',
     				genre:"accion",
     				sinopsis:"un militar...mata a todos."}
     				];
-    	listMovies.add(arr);
-	    	
-       
+    		listMovies.add(arr);
+
+        	//listMovies.fetch().complete( function () {		       		
+        	mainView.collection = listMovies;
+        	mainView.ShowListView();//carga el template con todas las pelilculas existentes
+        	//});	
+
+		});	
+        
+        Backbone.history.start();
        
 	};
 	
