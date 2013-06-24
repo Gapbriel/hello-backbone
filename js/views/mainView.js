@@ -11,18 +11,28 @@ define( function( require ){
             {            	
                   this.formView = new FormView;
                   this.listView = new ListView;
+
+                  
             },
+
+
             
             EditMovie: function () {
+            	$('.submit').val('editar');
+            	this.formView.modelMovie = this.model;
             	
             	$.each(this.model.attributes, function (key, val) {            	
             		$('#'+key).val(val);
             	});
 
             	$('#formContainer').find('input[type=text]').filter(':first').focus();
-            	
+
+            	this.formView.modelMovie.on('change', function () {
+            		console.log('escuchando cambio en el modelo');
+            	});
+
             },
-            
+
 
             ShowFormView: function (){
             	$('#formContainer').html(this.formView.render().$el);
