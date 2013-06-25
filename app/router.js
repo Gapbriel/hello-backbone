@@ -12,6 +12,7 @@ define(['jquery',
 		
 		routes: {
 			"listMovies" : "showlisMovies",
+			"showMovieForm"	 : "showForm", //para que muestre el form
 			"delete/:id" : "deleteMovie",//elimina desde la coleccion
 			"edit/:id"   : "editMovie",//edita desde mains
 			"addMovie":"addMovie",
@@ -33,6 +34,11 @@ define(['jquery',
 			mainView.collection = listMovies;
         	mainView.ShowListView();//carga el template con todas las pelilculas existentes        	
         	
+		});
+
+		app_router.on('route:showForm', function () {
+			console.log('estoy en showMovieForm');
+			mainView.ShowFormView();
 		});
 
 		app_router.on('route:addMovie', function () {

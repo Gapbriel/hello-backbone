@@ -33,7 +33,7 @@ define( function( require ){
 
 
             ShowFormView: function (){
-            	$('#formContainer').html(this.formView.render().$el);
+            	$('#movieList').html(this.formView.render().$el);
 				
 			},
 

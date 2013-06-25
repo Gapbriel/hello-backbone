@@ -20,41 +20,7 @@ define( [
           
           },
 
-          events: {
-            "click .cancel" : "cleanFormMovie",
-            "click .submit" : "addFormMovie"
-          },
-
-         addFormMovie: function () {
-            
-            if( $('.submit').val() === 'editar' ){
-
-              this.modelMovie.attributes.title = $('#title').val();
-              this.modelMovie.attributes.genre = $('#genre').val();
-              this.modelMovie.attributes.sinopsis = $('#sinopsis').val();
-              this.modelMovie.attributes.duration = $('#duration').val();
-
-            }else{
-            
-               this.modelMovie.add({title : $('#title').val(),
-                                    genre : $('#genre').val(),
-                                    sinopsis : $('#sinopsis').val(),
-                                    duration : $('#duration').val()
-                                  });
-            
-            } 
-            console.log('modelMovie ',this.modelMovie);
-            //falta el save para persistir los datos.    
-            this.modelMovie.save();       
-            this.cleanFormMovie();
-          },
-
           
-          cleanFormMovie: function (){  
-              this.$el.find('.data').val('');
-              this.$el.find('.submit').val('cargar');
-          }
-      });
 
     	return FormMovieView;
 
