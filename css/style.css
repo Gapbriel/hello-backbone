@@ -78,7 +78,7 @@ textarea{
 	margin-right: auto;
 	background-color: #49a5bf;
 	color: #FFF;
-	width: 600px;
+	width: 90%;
 	-webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -87,8 +87,22 @@ textarea{
 
 }
 
-.container-movies li{
-	list-style:none;
+.container-movies table{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+thead td{
+	text-transform: uppercase;
+	
+	padding: 5px 0 3px 0;
+	color: #777;
+	border-bottom: 1px solid #777; 
+}
+
+.table-functions{
+	text-align: right;
 }
 
 .menu-container{
