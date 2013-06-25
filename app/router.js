@@ -48,7 +48,8 @@ define(['jquery',
 
 		app_router.on('route:cancelMovie', ShowlistMovies);
 
-		app_router.on('route:showForm', function () {			
+		app_router.on('route:showForm', function () {		
+		    mainView.model = new ModelMovie;	
 			mainView.ShowFormView();		
 		});
 
@@ -76,7 +77,6 @@ define(['jquery',
                 nModel.save();
             	
             }
-           
             ShowlistMovies()
 		});
 		

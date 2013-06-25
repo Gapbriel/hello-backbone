@@ -17,19 +17,15 @@ define( function( require ){
             
             EditMovie: function () {
             	$('.submit').val('editar');
-            	//this.formView.modelMovie = this.model;
+            	
             	this.ShowFormView();
-
-            	$.each(this.model.attributes, function (key, val) {            	
-            		$('#'+key).val(val);
-            	});
 
                   $('#formContainer').find('input[type=text]').filter(':first').focus();
             },
 
 
             ShowFormView: function (){
-      	
+      	     this.formView.modelMovie = this.model;
                 $('#movieList').html(this.formView.render().$el);
 
 		    $('#formContainer').find('input[type=text]').filter(':first').focus();

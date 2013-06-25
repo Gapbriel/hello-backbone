@@ -13,11 +13,9 @@ define( [
 
 
           render: function() {
-           
-            this.$el.html( _.template( Template ));//, this.model.attributes ) );
-            
-             this.$el.find('input[type=text]').filter(':first').focus();
-
+            this.$el.html( _.template( Template, this.modelMovie.attributes ) );
+           //  console.log('validation',Backbone.Validation);
+             // Backbone.Validation.bind(this);
             return this;
           
           }

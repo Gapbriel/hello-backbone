@@ -1,21 +1,23 @@
 <div id="formContainer" class="form">
 <form id="movies" action="">
-		<input type="hidden" class="data" id="id" name="id" value="" required  >
+		<input type="hidden" class="data" id="id" name="id" value="<%= id %>" required  >
 	<div>
 		<label>título:</label>
-		<input class="data" type="text" id="title" name="title" value="" required  >
+		<input class="data" type="text" id="title" name="title" value="<%= title %>" required  >
 	</div>	
 	<div>
 		<label>genero:</label>
-		<input class="data" type="text" id="genre" name="genre" value="" required>
+		<input class="data" type="text" id="genre" name="genre" value="<%= genre %>" required>
 	</div>	
 	<div>
 		<label>duración:</label>
-		<input class="data" type="number" id="duration" name="duration" value="" required>
+		<input class="data" type="number" id="duration" name="duration" value="<%= duration %>" required>
 	</div>
 	<div>
 		<label>sinopsis</label>
-		<div class="divArea"><textarea class="data" id="sinopsis" name="sinopsis" required></textarea></div>
+		<div class="divArea">
+			<textarea class="data" id="sinopsis" name="sinopsis" required><%= sinopsis %></textarea>
+		</div>
 	</div>
 	<a href="/#addMovie" class="button submit">agregar</a>
 	<a href="/#cancelMovie" class="button cancel">cancelar</a>
