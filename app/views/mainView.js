@@ -17,35 +17,31 @@ define( function( require ){
             
             EditMovie: function () {
             	$('.submit').val('editar');
-            	this.formView.modelMovie = this.model;
-            	
+            	//this.formView.modelMovie = this.model;
+            	this.ShowFormView();
+
             	$.each(this.model.attributes, function (key, val) {            	
             		$('#'+key).val(val);
             	});
 
-            	$('#formContainer').find('input[type=text]').filter(':first').focus();
-
-            	this.formView.modelMovie.on('change', function () {
-            		console.log('escuchando cambio en el modelo');
-            	});
-
+                  $('#formContainer').find('input[type=text]').filter(':first').focus();
             },
 
 
             ShowFormView: function (){
-            	$('#movieList').html(this.formView.render().$el);
-				
-			},
+      	
+                $('#movieList').html(this.formView.render().$el);
 
-			ShowListView: function (reLoad){
-				//necesito agregar a la lista, otra manera de cargar el elemento en el DOM
-				//console.log('mainView ',this.collection);
-				this.listView.collectionMovies = this.collection;
-				//this.listView.render().$el.appendTo('#movieList');
-                        $('#movieList').html(this.listView.render().$el);
-				
+		    $('#formContainer').find('input[type=text]').filter(':first').focus();
+            },
 
-			}
+		ShowListView: function (reLoad){
+			
+                  this.listView.collectionMovies = this.collection;
+                  
+                  $('#movieList').html(this.listView.render().$el);
+		
+            }
     });
 	return MainView;
 });

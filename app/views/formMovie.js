@@ -8,17 +8,19 @@ define( [
     	var FormMovieView = Backbone.View.extend({   
            
           initialize: function (){
-              //_.bindAll(this, "render", "addFormMovie");
-
+             // _.bindAll(this, "render", "cancelFormMovie");
           },
+
 
           render: function() {
            
             this.$el.html( _.template( Template ));//, this.model.attributes ) );
             
+             this.$el.find('input[type=text]').filter(':first').focus();
+
             return this;
           
-          },
+          }
 
       });    
 

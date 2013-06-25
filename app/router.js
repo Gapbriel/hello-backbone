@@ -11,11 +11,12 @@ define(['jquery',
 	var AppRouter = Backbone.Router.extend({
 		
 		routes: {
-			"listMovies" : "showlisMovies",
+			"listMovies" : "showlistMovies",
 			"showMovieForm"	 : "showForm", //para que muestre el form
 			"delete/:id" : "deleteMovie",//elimina desde la coleccion
 			"edit/:id"   : "editMovie",//edita desde mains
-			"addMovie":"addMovie",
+			"addMovie"   : "addMovie",
+			"cancelMovie": "cancelMovie",
 			"*actions"   : "defaultAction"
 
 		},
@@ -24,27 +25,43 @@ define(['jquery',
 
 	
 
+		
+
 	var initialize = function(){
 		
 		var app_router = new AppRouter,
 		mainView = new MainView;
 
-		app_router.on('route:showlisMovies', function (){
+		
+		
+		function ShowlistMovies(){
+		
 			listMovies.fetch();		   
+			
 			mainView.collection = listMovies;
-        	mainView.ShowListView();//carga el template con todas las pelilculas existentes        	
-        	
-		});
+			
+			mainView.ShowListView();        	
+			
+		}
 
-		app_router.on('route:showForm', function () {
-			console.log('estoy en showMovieForm');
-			mainView.ShowFormView();
+		app_router.on('route:showlistMovies', ShowlistMovies);
+
+		app_router.on('route:cancelMovie', ShowlistMovies);
+
+		app_router.on('route:showForm', function () {			
+			mainView.ShowFormView();		
 		});
 
 		app_router.on('route:addMovie', function () {
 			
-			if($('.submit').html() === "editar"){
-				mainView.collection = listMovies;
+			if($('#id').val() > 0){
+				
+                listMovies.get($('#id').val()).attributes.title = $('#title').val();
+	            listMovies.get($('#id').val()).attributes.genre = $('#genre').val();
+	            listMovies.get($('#id').val()).attributes.sinopsis = $('#sinopsis').val();
+	            listMovies.get($('#id').val()).attributes.duration = $('#duration').val();
+                listMovies.get($('#id').val()).save();
+
              }else{
             
                var nId = (!listMovies.length) ? 1 : listMovies.last().get('id') + 1;
@@ -59,19 +76,16 @@ define(['jquery',
                 nModel.save();
             	
             }
-            $('#buttonListMovies')       
-            $('.cancel').click();
+           
+            ShowlistMovies()
 		});
 		
 		
 		app_router.on( 'route:deleteMovie', function (id) {
-
-			var nModel = listMovies.get(id);
-            nModel.destroy();
+			//var nModel = listMovies.get(id);
+            listMovies.get(id).destroy();
             listMovies.remove();
-            mainView.collection = listMovies;
-            mainView.ShowListView();
-            
+            ShowlistMovies();            
 		});
 
 		app_router.on( 'route:editMovie', function (id) { 
@@ -82,7 +96,6 @@ define(['jquery',
 		app_router.on( 'route:defaultAction', function( actions ){		
 
         	console.log('defaultAction');
-        	
 
 		});	
         
