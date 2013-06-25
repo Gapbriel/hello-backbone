@@ -2,18 +2,17 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'models/movie',
-	'backboneLocalStorage'
-	], function($,_, Backbone, Movie,LocalStorage){
+	'localstorage',
+	'models/movie'	
+	], function($,_, Backbone ,LocalStorage , Movie){
 		var Movies = Backbone.Collection.extend({
 			
 			model: Movie,
-			
-			localStorage:  new Backbone.LocalStorage("collection-Movie"),
+			localStorage:  new Backbone.LocalStorage("ls-movies"),
 			
 			initialize: function () {
 				//console.log(Backbone);
-				//this.fetch();
+				
 			}
 
 		});

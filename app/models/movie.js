@@ -2,9 +2,8 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'models/movie',
-	'backboneLocalStorage'
-	], function($,_, Backbone, Movie,LocalStorage){
+	'models/movie'
+	], function($,_, Backbone, Movie){
 		var Movie = Backbone.Model.extend({
 			defaults:{
 				id:0,

@@ -3,7 +3,7 @@ define([
 	'underscore',
 	'backbone',
 	'models/movie',
-	'text!templates/listsMovies.html'
+	'text!../templates/listsMovies.html'
 	], function($,_, Backbone, Movie,Template){
 		
 		

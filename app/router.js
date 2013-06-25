@@ -2,8 +2,9 @@ define(['jquery',
 	    'underscore', 
 	    'backbone',
 	    'views/mainView',
-	    'collections/movies'
-], function($, _, Backbone, MainView, CollectionMovies){
+	    'collections/movies',
+	    'models/movie'
+], function($, _, Backbone, MainView, CollectionMovies, ModelMovie){
 
 	var listMovies = new CollectionMovies;
 
@@ -20,23 +21,7 @@ define(['jquery',
 
 	}); 
 
-	var arr = [{ id:1,
-        			title:"rambo",
-    			    duration:62,
-    				genre:"accion",
-    				sinopsis:"un militar...mata a todos."}, 
-    				{id:2,
-        			title:"rambo II",
-    			    duration:70,
-    				genre:"accion",
-    				sinopsis:"un militar...mata a todos."},
-    				{id:3,
-        			title:"rambo III",
-    			    duration:82,
-    				genre:"accion",
-    				sinopsis:"un militar...mata a todos."}
-    				];
-    listMovies.add(arr);
+	
 
 	var initialize = function(){
 		
@@ -63,10 +48,9 @@ define(['jquery',
                               });
 
             	mainView.collection = listMovies;
-            	console.log(mainView.collection);
             } 
             //falta el save para persistir los datos.  
-             //listMovies.save();
+            //listMovies.save();
             mainView.ShowListView(true);       
             $('.cancel').click();
 		});
@@ -88,10 +72,10 @@ define(['jquery',
 			
 			mainView.ShowFormView();//muestra el template del formulario
 
-        	//listMovies.fetch().complete( function () {		       		
+        	listMovies.fetch();		       		
         	mainView.collection = listMovies;
-        	mainView.ShowListView();//carga el template con todas las pelilculas existentes
-        	//});	
+        	mainView.ShowListView();//carga el template con todas las pelilculas existentes        	
+        	
 
 		});	
         

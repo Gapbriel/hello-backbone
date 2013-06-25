@@ -25,7 +25,7 @@ define( [
             //"click .submit" : "addFormMovie"
           },
 
-          /*addFormMovie: function () {
+         /* addFormMovie: function () {
             
             if( $('.submit').val() === 'editar' ){
 
@@ -43,11 +43,13 @@ define( [
                                   });
             
             } 
-            //falta el save para persistir los datos.           
+            console.log('modelMovie ',this.modelMovie);
+            //falta el save para persistir los datos.    
+            this.modelMovie.save();       
             this.cleanFormMovie();
-          },
+          },*/
 
-          */
+          
           cleanFormMovie: function (){  
               this.$el.find('.data').val('');
               this.$el.find('.submit').val('cargar');
