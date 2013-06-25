@@ -16,8 +16,7 @@ define( function( require ){
 
             
             EditMovie: function () {
-            	$('.submit').val('editar');
-            	
+
             	this.ShowFormView();
 
                   $('#formContainer').find('input[type=text]').filter(':first').focus();
@@ -25,10 +24,13 @@ define( function( require ){
 
 
             ShowFormView: function (){
-      	     this.formView.modelMovie = this.model;
+
+      	    this.formView.modelMovie = this.model;
+                
                 $('#movieList').html(this.formView.render().$el);
 
 		    $('#formContainer').find('input[type=text]').filter(':first').focus();
+            
             },
 
 		ShowListView: function (reLoad){

@@ -57,10 +57,12 @@ define(['jquery',
 			
 			if($('#id').val() > 0){
 				
-                listMovies.get($('#id').val()).attributes.title = $('#title').val();
-	            listMovies.get($('#id').val()).attributes.genre = $('#genre').val();
-	            listMovies.get($('#id').val()).attributes.sinopsis = $('#sinopsis').val();
-	            listMovies.get($('#id').val()).attributes.duration = $('#duration').val();
+                listMovies.get($('#id').val()).attributes = ({
+                											title : $('#title').val(),
+	            											genre : $('#genre').val(),
+	            											sinopsis : $('#sinopsis').val(),
+	            											duration : $('#duration').val()
+	            											});
                 listMovies.get($('#id').val()).save();
 
              }else{
