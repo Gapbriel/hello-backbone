@@ -1,4 +1,5 @@
 body{
+	margin: 0 0 0 0;
 	background-color: grey;
 	color: #777;
 	font-family:Arial, 'Liberation Sans', 'DejaVu Sans', sans-serif;
@@ -88,4 +89,16 @@ textarea{
 
 .containerMovies li{
 	list-style:none;
+}
+
+.menu-container{
+	padding: 7px;
+	background-color: red;
+}
+.menu-container .menu{
+	color: #FFF;
+	margin-left: 10px;
+	text-decoration: none;
+	text-transform: lowercase;
+	font-weight: bold;
 }
