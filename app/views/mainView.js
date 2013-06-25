@@ -41,8 +41,7 @@ define( function( require ){
 				//necesito agregar a la lista, otra manera de cargar el elemento en el DOM
 				//console.log('mainView ',this.collection);
 				this.listView.collectionMovies = this.collection;
-
-				
+				//this.listView.render().$el.appendTo('#movieList');
                         $('#movieList').html(this.listView.render().$el);
 				
 

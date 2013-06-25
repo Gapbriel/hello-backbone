@@ -22,7 +22,7 @@ define([
 	            }, this);*/
 				//en este caso el each esta dentro del template
 				
-				this.$el.append(compiledTemplate({
+				this.$el.html(compiledTemplate({
 	                movies: this.collectionMovies.toJSON()
 	            }));
 	            

@@ -72,7 +72,7 @@ textarea{
     border: 1px solid #ccc;
 }
 
-.containerMovies {
+.container-movies {
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
@@ -87,7 +87,7 @@ textarea{
 
 }
 
-.containerMovies li{
+.container-movies li{
 	list-style:none;
 }
 
