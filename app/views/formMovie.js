@@ -20,7 +20,7 @@ define( [
           
           },
 
-          
+      });    
 
     	return FormMovieView;
 

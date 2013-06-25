@@ -42,10 +42,9 @@ define( function( require ){
 				//console.log('mainView ',this.collection);
 				this.listView.collectionMovies = this.collection;
 
-				if(reLoad)//no esta bien implementado, debería elminarse al elminar el registro del modelo.
-					this.listView.render().$el.html('');
-
-				this.listView.render().$el.appendTo('#movieList');
+				
+                        $('#movieList').html(this.listView.render().$el);
+				
 
 			}
     });
