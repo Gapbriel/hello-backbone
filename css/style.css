@@ -54,6 +54,10 @@ input[type="number"],input[type="text"]{
 	background-color: #666;
 }
 
+.buttonIndex{
+	float: center;
+}
+
 textarea{
 	width: 95%;
 	height: 100%;

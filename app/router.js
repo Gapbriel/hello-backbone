@@ -31,24 +31,8 @@ define(['jquery',
 		app_router.on('route:addMovie', function () {
 			console.log('entreo en addMovie');
 			
-			if($('#id').val() != "" ){
-			  
-              listMovies.get($('#id').val()).attributes.title = $('#title').val();
-              listMovies.get($('#id').val()).attributes.genre = $('#genre').val();
-              listMovies.get($('#id').val()).attributes.sinopsis = $('#sinopsis').val();
-              listMovies.get($('#id').val()).attributes.duration = $('#duration').val();
-              
+				mainView.collection = listMovies;
              
-            }else{
-            	
-               listMovies.add({title : $('#title').val(),
-                                genre : $('#genre').val(),
-                                sinopsis : $('#sinopsis').val(),
-                                duration : $('#duration').val()
-                              });
-
-            	mainView.collection = listMovies;
-            } 
             //falta el save para persistir los datos.  
             //listMovies.save();
             mainView.ShowListView(true);       

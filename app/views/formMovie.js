@@ -22,10 +22,10 @@ define( [
 
           events: {
             "click .cancel" : "cleanFormMovie",
-            //"click .submit" : "addFormMovie"
+            "click .submit" : "addFormMovie"
           },
 
-         /* addFormMovie: function () {
+         addFormMovie: function () {
             
             if( $('.submit').val() === 'editar' ){
 
@@ -47,7 +47,7 @@ define( [
             //falta el save para persistir los datos.    
             this.modelMovie.save();       
             this.cleanFormMovie();
-          },*/
+          },
 
           
           cleanFormMovie: function (){  
