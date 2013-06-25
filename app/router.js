@@ -11,7 +11,7 @@ define(['jquery',
 	var AppRouter = Backbone.Router.extend({
 		
 		routes: {
-
+			"listMovies" : "showlisMovies",
 			"delete/:id" : "deleteMovie",//elimina desde la coleccion
 			"edit/:id"   : "editMovie",//edita desde mains
 			"addMovie":"addMovie",
@@ -28,15 +28,19 @@ define(['jquery',
 		var app_router = new AppRouter,
 		mainView = new MainView;
 
+		app_router.on('route:showlisMovies', function (){
+			listMovies.fetch();		   
+			mainView.collection = listMovies;
+        	mainView.ShowListView();//carga el template con todas las pelilculas existentes        	
+        	
+		});
+
 		app_router.on('route:addMovie', function () {
-			console.log('entreo en addMovie');
 			
+			if($('.submit').html() === "editar"){
 				mainView.collection = listMovies;
-             
-<<<<<<< HEAD
-=======
-            }else{
-              //listMovies.add
+             }else{
+            
                var nId = (!listMovies.length) ? 1 : listMovies.last().get('id') + 1;
                var nModel = new ModelMovie({
                					id:nId,
@@ -48,11 +52,8 @@ define(['jquery',
                 listMovies.add(nModel);
                 nModel.save();
             	
-            } 
->>>>>>> 7a710b4054c6138c607fc17a7a7c967d540cfb76
-            //falta el save para persistir los datos.  
-            //listMovies.save();
-            mainView.ShowListView(true);       
+            }
+            $('#buttonListMovies')       
             $('.cancel').click();
 		});
 		
@@ -69,13 +70,9 @@ define(['jquery',
 			mainView.EditMovie();
 		});
 
-		app_router.on( 'route:defaultAction', function( actions ){
-			
-			mainView.ShowFormView();//muestra el template del formulario
+		app_router.on( 'route:defaultAction', function( actions ){		
 
-        	listMovies.fetch();		       		
-        	mainView.collection = listMovies;
-        	mainView.ShowListView();//carga el template con todas las pelilculas existentes        	
+        	console.log('defaultAction');
         	
 
 		});	
