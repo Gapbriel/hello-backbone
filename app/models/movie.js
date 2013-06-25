@@ -13,14 +13,28 @@ define([
 				sinopsis:''
 			},
 
-			/*validate: function() {
+			validation: {
 				
-				if( isNaN( this.duration ) ){				
-					console.log('el campo duration no es numerico');		
-					return 'el campo duration no es numerico';		
+				title: {
+					required: true,
+					msg:"Por favor escriba el nombre de la pelicula."
+				},
+				genre: {
+					required: true,
+					msg:"Por favor escriba el tipo de genero de la pelicula."
+				},
+				duration: {
+					required: true,
+					pattern: 'number',
+					msg:"Por favor escriba la duracion de la pelicula."
+				},
+				sinopsis:{
+					required: true,
+					msg:"Por favor escriba la sinopsis de la pelicula."
 				}
+
 			
-			},*/
+			},
 
 			initialize: function () {
 				/* No sirve porque cambia el cid por el id pero en el dom ya existe el id no el cid.
