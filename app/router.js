@@ -33,6 +33,23 @@ define(['jquery',
 			
 				mainView.collection = listMovies;
              
+<<<<<<< HEAD
+=======
+            }else{
+              //listMovies.add
+               var nId = (!listMovies.length) ? 1 : listMovies.last().get('id') + 1;
+               var nModel = new ModelMovie({
+               					id:nId,
+               					title : $('#title').val(),
+                                genre : $('#genre').val(),
+                                sinopsis : $('#sinopsis').val(),
+                                duration : $('#duration').val()
+                              });
+                listMovies.add(nModel);
+                nModel.save();
+            	
+            } 
+>>>>>>> 7a710b4054c6138c607fc17a7a7c967d540cfb76
             //falta el save para persistir los datos.  
             //listMovies.save();
             mainView.ShowListView(true);       
