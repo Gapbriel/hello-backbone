@@ -57,17 +57,19 @@ define(['jquery',
 			
 			if($('#id').val() > 0){
 				
-                listMovies.get($('#id').val()).attributes = ({
+                listMovies.get($('#id').val()).attributes = ({id : $('#id').val(),
                 											title : $('#title').val(),
 	            											genre : $('#genre').val(),
 	            											sinopsis : $('#sinopsis').val(),
 	            											duration : $('#duration').val()
 	            											});
+                
                 listMovies.get($('#id').val()).save();
 
              }else{
             
                var nId = (!listMovies.length) ? 1 : listMovies.last().get('id') + 1;
+             
                var nModel = new ModelMovie({
                					id:nId,
                					title : $('#title').val(),
@@ -77,7 +79,6 @@ define(['jquery',
                               });
                 listMovies.add(nModel);
                 nModel.save();
-            	
             }
             ShowlistMovies()
 		});
