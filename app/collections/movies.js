@@ -13,6 +13,9 @@ define([
 			initialize: function () {
 				//console.log(Backbone);
 				
+			},
+			comparator: function(chapter) {
+			  return chapter.get("title"); 
 			}
 
 		});

@@ -20,8 +20,7 @@ define([
 	               this.$el.append( compiledTemplate( item.attributes ) );
 
 	            }, this);*/
-				//en este caso el each esta dentro del template
-				
+				//en este caso el each esta dentro del template			
 				this.$el.html(compiledTemplate({
 	                movies: this.collectionMovies.toJSON()
 	            }));

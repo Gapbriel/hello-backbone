@@ -36,6 +36,8 @@ define( function( require ){
 		ShowListView: function (reLoad){
 			
                   this.listView.collectionMovies = this.collection;
+                  //ordena la coleccion pero antes declara un "comparator" en .colection.extends
+                  this.listView.collectionMovies.sort();
                   
                   $('#movieList').html(this.listView.render().$el);
 		
