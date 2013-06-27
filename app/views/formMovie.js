@@ -22,7 +22,7 @@ define( [
           render: function() {
 
             this.$el.html( _.template( Template, this.modelMovie.attributes ) );           
-            
+            Backbone.Validation.bind(this);
             return this;
           
           },
