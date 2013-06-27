@@ -14,10 +14,10 @@ define([
 				//console.log(Backbone);
 				
 			},
-			comparator: function(chapter) {
-			  return chapter.get("title"); 
-			}
 
+			comparator: function(obj) {
+			  return obj.get("title"); 
+			}
 		});
 
 

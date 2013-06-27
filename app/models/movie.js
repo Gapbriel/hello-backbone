@@ -6,10 +6,10 @@ define([
 	], function($,_, Backbone, Movie){
 		var Movie = Backbone.Model.extend({
 			defaults:{
-				id:0,
+				id:'',
 				title:'',
 				genre:'',
-				duration:0,
+				duration:'',
 				sinopsis:''
 			},
 
@@ -47,7 +47,6 @@ define([
 				
 			}
 		});
-		// return the model for the module
 
 		return Movie;
 });

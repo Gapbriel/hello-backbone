@@ -11,8 +11,7 @@ define([
 			
 			render:function(){
 
-				var compiledTemplate = _.template( Template);
-                
+				var compiledTemplate = _.template( Template);                
                 //recorro la collecion y cargo los datos en el template
                 //dos maneras distintas, en esta el each dentro de la view
                 /*_.each(this.collectionMovies.models, function(item){
@@ -28,7 +27,8 @@ define([
 	            return this;
             }
 
-		});
+	});
 
-		return MovieListView;
+	return MovieListView;
+
 });

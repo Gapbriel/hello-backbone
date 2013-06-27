@@ -1,47 +1,79 @@
-define( function( require ){
-	// Manejador de las views, para tener un poco mas abstraccion entre el 
-	// Router y las distintas views de la app.
+define(['jquery', 
+        'underscore', 
+        'backbone',
+        'views/mainView',
+        'collections/movies',
+        'models/movie',
+        'views/formMovie',
+        'views/listMovies'
+        ],function($, _, Backbone, MainView, CollectionMovies, ModelMovie, FormView, ListView){
 
-	var FormView = require('views/formMovie'),
-	     ListView = require('views/listMovies');//probando distintas formas de define signature REQUIRE
+  var listMovies = new CollectionMovies;
 
 	var MainView = Backbone.View.extend({
             
+            el:$('#movieList'),
+
             initialize: function()
             {            	
                   this.formView = new FormView;
                   this.listView = new ListView;
             },
 
+            render: function (){
 
+                this.$el.html('');
+            },
+
+            EditMovie: function (id) {
+
+                this.formView.collectionMovies = listMovies;
+                
+                this.formView.modelMovie = listMovies.get(id); 
+             	  
+                this.$el.html(this.formView.render().$el);
+              
+                $('#formContainer').find('input[type=text]').filter(':first').focus();
             
-            EditMovie: function () {
-
-            	this.ShowFormView();
-
-                  $('#formContainer').find('input[type=text]').filter(':first').focus();
             },
 
 
             ShowFormView: function (){
 
-      	    this.formView.modelMovie = this.model;
+                this.formView.modelMovie = new ModelMovie;      	        
                 
-                $('#movieList').html(this.formView.render().$el);
+                this.formView.that = this;
 
-		    $('#formContainer').find('input[type=text]').filter(':first').focus();
+                this.$el.html(this.formView.render().$el);
+
+		            $('#formContainer').find('input[type=text]').filter(':first').focus();
             
             },
 
-		ShowListView: function (reLoad){
-			
-                  this.listView.collectionMovies = this.collection;
-                  //ordena la coleccion pero antes declara un "comparator" en .colection.extends
-                  this.listView.collectionMovies.sort();
-                  
-                  $('#movieList').html(this.listView.render().$el);
-		
-            }
+        		ShowListView: function (){
+
+        			  listMovies.fetch();
+                //ordena la coleccion pero antes declara un "comparator" en .colection.extends
+                listMovies.sort();
+
+                this.listView.collectionMovies = listMovies;
+                                                
+                this.$el.html(this.listView.render().$el);
+        		
+            },
+
+            events:{
+
+            'click .submit' : 'addMovie',
+            'click .cancel' : 'cleanForm'
+
+          },
+
+          
+
+            
     });
+
 	return MainView;
+
 });
