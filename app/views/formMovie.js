@@ -64,9 +64,9 @@ define( [
 
                 if ( $('.cancel').html() === "finalizar" )
                    window.location.hash = "/listMovies";
-                else
-                   window.location.hash = "#";
-
+                                   
+                this.remove();    
+            
             },
 
             cleanForm: function () {

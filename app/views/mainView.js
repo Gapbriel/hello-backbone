@@ -16,13 +16,19 @@ define(['jquery',
 
             initialize: function()
             {            	
+                  
                   this.formView = new FormView;
+                  
                   this.listView = new ListView;
+            
             },
 
             render: function (){
 
                 this.$el.html('');
+                
+                return this;
+            
             },
 
             EditMovie: function (id) {
@@ -46,31 +52,21 @@ define(['jquery',
 
                 this.$el.html(this.formView.render().$el);
 
-		            $('#formContainer').find('input[type=text]').filter(':first').focus();
+		        $('#formContainer').find('input[type=text]').filter(':first').focus();
             
             },
 
-        		ShowListView: function (){
+        	ShowListView: function (){
 
-        			  listMovies.fetch();
-                //ordena la coleccion pero antes declara un "comparator" en .colection.extends
+        		listMovies.fetch();
+                
                 listMovies.sort();
 
                 this.listView.collectionMovies = listMovies;
                                                 
                 this.$el.html(this.listView.render().$el);
         		
-            },
-
-            events:{
-
-            'click .submit' : 'addMovie',
-            'click .cancel' : 'cleanForm'
-
-          },
-
-          
-
+            }
             
     });
 
