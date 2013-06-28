@@ -4,6 +4,8 @@ define([
 	'backbone',
 	'models/movie'
 	], function($,_, Backbone, Movie){
+
+
 		var Movie = Backbone.Model.extend({
 			defaults:{
 				id:'',

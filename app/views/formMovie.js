@@ -6,11 +6,9 @@ define( [
   'text!templates/formMovie.html'
 	], function( $, _, Backbone, ModelMovie, Template) {
 
-    	var FormMovieView = Backbone.View.extend({   
-           
-          initialize: function (){
-             _.bindAll(this.events);
-          },
+    	var FormMovieView = Backbone.View.extend({  
+        
+          el:$('#movieList'),
 
           events:{
 
@@ -19,10 +17,20 @@ define( [
 
           },
 
+          initialize: function (){
+
+            
+
+          },
+
           render: function() {
 
-            this.$el.html( _.template( Template, this.modelMovie.attributes ) );           
-            Backbone.Validation.bind(this);
+            this.$el.html( _.template( Template, this.modelMovie.attributes ) ); 
+
+          
+            
+            $('#formContainer').find('input[type=text]').filter(':first').focus();
+
             return this;
           
           },
@@ -52,11 +60,12 @@ define( [
                                                     duration : $('#duration').val()
                                                   });
                       listMovies.add(newModel);
+                      
                       newModel.save();               
                     
                 }
                
-                $('.cancel').html('finalizar');
+                this.cleanForm();
 
             },
 
@@ -64,8 +73,9 @@ define( [
 
                 if ( $('.cancel').html() === "finalizar" )
                    window.location.hash = "/listMovies";
-                                   
-                this.remove();    
+                else                   
+                   window.location.hash = "#";
+                //this.$el.html('');    
             
             },
 

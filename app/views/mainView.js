@@ -10,12 +10,12 @@ define(['jquery',
 
   var listMovies = new CollectionMovies;
 
-	var MainView = Backbone.View.extend({
+    var MainView = Backbone.View.extend({
             
             el:$('#movieList'),
 
             initialize: function()
-            {            	
+            {               
                   
                   this.formView = new FormView;
                   
@@ -36,40 +36,40 @@ define(['jquery',
                 this.formView.collectionMovies = listMovies;
                 
                 this.formView.modelMovie = listMovies.get(id); 
-             	  
-                this.$el.html(this.formView.render().$el);
-              
-                $('#formContainer').find('input[type=text]').filter(':first').focus();
+                  
+                //this.$el.html(this.formView.render().$el);
+                this.formView.render();
+                
             
             },
 
 
             ShowFormView: function (){
 
-                this.formView.modelMovie = new ModelMovie;      	        
+                this.formView.modelMovie = new ModelMovie;                  
                 
                 this.formView.that = this;
 
-                this.$el.html(this.formView.render().$el);
-
-		        $('#formContainer').find('input[type=text]').filter(':first').focus();
+                //this.$el.html(this.formView.render().$el);
+                this.formView.render()
+                
             
             },
 
-        	ShowListView: function (){
+            ShowListView: function (){
 
-        		listMovies.fetch();
+                listMovies.fetch();
                 
                 listMovies.sort();
 
                 this.listView.collectionMovies = listMovies;
                                                 
                 this.$el.html(this.listView.render().$el);
-        		
+                
             }
             
     });
 
-	return MainView;
+    return MainView;
 
 });
