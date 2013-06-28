@@ -2,9 +2,12 @@ define( [
 	'jquery',
   'underscore',
   'backbone',
-  'models/movie',
+  'collections/movies',
+  'models/movie',   
   'text!templates/formMovie.html'
-	], function( $, _, Backbone, ModelMovie, Template) {
+	], function( $, _, Backbone, CollectionMovies, ModelMovie,  Template) {
+
+    var collection = new CollectionMovies;
 
     	var FormMovieView = Backbone.View.extend({  
         
@@ -17,17 +20,9 @@ define( [
 
           },
 
-          initialize: function (){
-
-            
-
-          },
-
           render: function() {
-
+                       
             this.$el.html( _.template( Template, this.modelMovie.attributes ) ); 
-
-          
             
             $('#formContainer').find('input[type=text]').filter(':first').focus();
 
@@ -39,9 +34,8 @@ define( [
 
                 nModel = this.modelMovie;
                 
-                
-                if( typeof(nModel) != "undefined" ){
-                  
+                if( this.$el.find('#id').val() != "" ){
+                      console.log('editando movie');  
                       nModel.attributes = ({  
                                               title : $('#title').val(),
                                               genre : $('#genre').val(),
@@ -52,14 +46,15 @@ define( [
                        nModel.save();
                        
                  }else{
-                  
+                    console.log('creando movie',this.collectionMovies);
                      var newModel = new ModelMovie({id : parseInt(Date.now()),
                                                     title : $('#title').val(),
                                                     genre : $('#genre').val(),
                                                     sinopsis : $('#sinopsis').val(),
                                                     duration : $('#duration').val()
                                                   });
-                      listMovies.add(newModel);
+                     console.log(newModel);
+                      this.collectionMovies.add(newModel);
                       
                       newModel.save();               
                     

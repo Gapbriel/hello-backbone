@@ -32,12 +32,9 @@ define(['jquery',
             },
 
             EditMovie: function (id) {
-
-                this.formView.collectionMovies = listMovies;
                 
-                this.formView.modelMovie = listMovies.get(id); 
-                  
-                //this.$el.html(this.formView.render().$el);
+                this.formView.modelMovie = listMovies.get(id);                   
+                
                 this.formView.render();
                 
             
@@ -46,14 +43,11 @@ define(['jquery',
 
             ShowFormView: function (){
 
-                this.formView.modelMovie = new ModelMovie;                  
-                
-                this.formView.that = this;
+                this.formView.collectionMovies = listMovies;
 
-                //this.$el.html(this.formView.render().$el);
-                this.formView.render()
-                
-            
+                this.formView.modelMovie = new ModelMovie;  
+
+                this.formView.render();
             },
 
             ShowListView: function (){
