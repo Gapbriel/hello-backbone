@@ -132,3 +132,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', end
 .menu-container .menu:hover{
 	color: green;
 }
+
+.container-page .normal{
+	text-decoration: none;
+	color: orange;
+}
+.container-page .normal:hover{
+	color: #666;
+}

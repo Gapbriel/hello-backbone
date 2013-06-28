@@ -1,7 +1,7 @@
 <div class="container-page">
-<% _.each(pages, function(item) { %> 
-	<a href="/#list/page/:<% item.page %>" <% if ( !item.select_page ){ class="normal"  } %>>
-	<% item.page %>
+<% _.each(listPages, function(item) { %> 
+	<a <% if( item.class_page == "normal") { %> href="/#listMovies/page/<%= item.pageNumber %>" <% } %> class="<%= item.class_page %>">
+	<%= item.pageNumber %>
 	</a>
-<% } %>
+<% }); %>
 </div>
