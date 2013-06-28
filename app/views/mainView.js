@@ -63,15 +63,15 @@ define(['jquery',
 
             },
 
-            ShowListView: function (){
-
+            ShowListView: function (page){
+                
                 listMovies.fetch();
                 
                 listMovies.sort();
 
                 this.listView.collectionMovies = listMovies;
-                                                
-                this.$el.html(this.listView.render().$el);
+
+                this.$el.html(this.listView.render(page).$el);
                 
             }
 
