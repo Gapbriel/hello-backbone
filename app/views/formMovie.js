@@ -23,9 +23,7 @@ define( [
           render: function() {
                        
             this.$el.html( _.template( Template, this.modelMovie.attributes ) ); 
-            
-            $('#formContainer').find('input[type=text]').filter(':first').focus();
-
+           
             return this;
           
           },
@@ -36,7 +34,7 @@ define( [
                 
                 if( this.$el.find('#id').val() != "" ){
                       console.log('editando movie');  
-                      nModel.attributes = ({  
+                      nModel.attributes = ({  id : $('#id').val(),
                                               title : $('#title').val(),
                                               genre : $('#genre').val(),
                                               sinopsis : $('#sinopsis').val(),
@@ -44,23 +42,26 @@ define( [
                                           });                      
                       
                        nModel.save();
-                       
+                        
+                        window.location.hash = "/listMovies";
+                 
                  }else{
-                    console.log('creando movie',this.collectionMovies);
-                     var newModel = new ModelMovie({id : parseInt(Date.now()),
-                                                    title : $('#title').val(),
-                                                    genre : $('#genre').val(),
-                                                    sinopsis : $('#sinopsis').val(),
-                                                    duration : $('#duration').val()
-                                                  });
-                     console.log(newModel);
-                      this.collectionMovies.add(newModel);
-                      
-                      newModel.save();               
+                 
+                   var newModel = new ModelMovie({id : parseInt(Date.now()),
+                                                  title : $('#title').val(),
+                                                  genre : $('#genre').val(),
+                                                  sinopsis : $('#sinopsis').val(),
+                                                  duration : $('#duration').val()
+                                                });
+                   
+                    this.collectionMovies.add(newModel);
                     
+                    newModel.save();   
+                                
+                    this.cleanForm();
                 }
                
-                this.cleanForm();
+                
 
             },
 

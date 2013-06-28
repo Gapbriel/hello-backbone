@@ -32,14 +32,24 @@ define(['jquery',
             },
 
             EditMovie: function (id) {
-                
                 this.formView.modelMovie = listMovies.get(id);                   
                 
                 this.formView.render();
                 
-            
+                $('#formContainer .cancel').html('finalizar');
+                
+                $('#formContainer').find('input[type=text]').filter(':first').focus();
+
             },
 
+            DeleteMovie: function (id) {
+                console.log('entro en eliminar');
+                var nModel = listMovies.get(id);           
+                nModel.destroy();
+                listMovies.remove(nModel);
+                this.ShowListView();   
+
+            },
 
             ShowFormView: function (){
 
@@ -48,6 +58,9 @@ define(['jquery',
                 this.formView.modelMovie = new ModelMovie;  
 
                 this.formView.render();
+                
+                $('#formContainer').find('input[type=text]').filter(':first').focus();
+
             },
 
             ShowListView: function (){
@@ -61,6 +74,8 @@ define(['jquery',
                 this.$el.html(this.listView.render().$el);
                 
             }
+
+
             
     });
 

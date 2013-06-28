@@ -37,11 +37,8 @@ define(['jquery',
 		
 		app_router.on( 'route:deleteMovie', function (id) {
 			
-			nModel = listMovies.get(id);			
-            nModel.destroy();
-            listMovies.remove(nModel);
-           	mainView.ShowListView();   
-
+			mainView.DeleteMovie(id);
+		
 		});
 
 		app_router.on( 'route:editMovie', function (id) { 
