@@ -45,7 +45,7 @@ define([
 
 			initialize: function () {
 				this.on("invalid", function(model, error){
-            	console.log(error);
+            	 $('.error-msg').text('ERROR').show();
         		});
 
 			}

@@ -140,3 +140,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', end
 .container-page .normal:hover{
 	color: #666;
 }
+
+.error-msg{
+	color: red;
+	float: right;
+}
