@@ -4,20 +4,20 @@
 	<div>
 		<label>título:</label>
 		<input class="data" type="text" id="title" name="title" value="<%= title %>" required  >
-	</div>	
+	</div> <div class="error-msg"></div>
 	<div>
 		<label>genero:</label>
 		<input class="data" type="text" id="genre" name="genre" value="<%= genre %>" required>
-	</div>	
+	</div> <div class="error-msg"></div>	
 	<div>
 		<label>duración:</label>
 		<input class="data" type="text" id="duration" name="duration" value="<%= duration %>" required>
-	</div>
+	</div> <div class="error-msg"></div>
 	<div>
 		<label>sinopsis</label>
 		<div class="divArea">
 			<textarea class="data" type="text" id="sinopsis" name="sinopsis" required><%= sinopsis %></textarea>
-		</div>
+		</div> <div class="error-msg"></div>
 	</div>
 	<!--<a href="/#addMovie" class="button submit">agregar</a>
 	<a href="/#listMovies" class="button cancel">cancelar</a>-->

@@ -22,7 +22,7 @@ define([
 			    
 				if ( attrs.title=== "" ) {
 			      console.log("fallo el titulo");
-			      return alert('Agregue un nombre de peli');
+			      return "write a title!";
 			    }
 
 			    if ( attrs.genre === "" ) {
