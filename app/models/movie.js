@@ -20,22 +20,22 @@ define([
 				//return "no se guardo";
 				console.log(attrs.duration);
 			    
-				if ( attrs.title=== undefined ) {
+				if ( attrs.title=== "" ) {
 			      console.log("fallo el titulo");
-			      return "write a title";
+			      return alert('Agregue un nombre de peli');
 			    }
 
-			    if ( attrs.genre === undefined ) {
+			    if ( attrs.genre === "" ) {
 			      console.log("fallo el genero");
 			      return "write a genre you mother fucker!";
 			    }
 
-			    if ( isNaN(attrs.duration) ) {
+			    if ( isNaN(attrs.duration) || attrs.duration === "" ) {
 			      console.log("fallo la duracion");
 			      return "can't end before it starts";
 			    }
 
-			    if ( attrs.sinopsis === undefined ) {
+			    if ( attrs.sinopsis === "" ) {
 			      console.log("fallo el genero");
 			      return "write a sinopsis you mother fucker!";
 			    }
@@ -44,7 +44,10 @@ define([
 			},
 
 			initialize: function () {
-				
+				this.on("invalid", function(model, error){
+            	console.log(error);
+        		});
+
 			}
 		});
 
