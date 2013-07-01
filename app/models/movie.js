@@ -15,37 +15,18 @@ define([
 				sinopsis:''
 			},
 
-			validation: {
-				
-				title: {
-					required: true,
-					msg:"Por favor escriba el nombre de la pelicula."
-				},
-				genre: {
-					required: true,
-					msg:"Por favor escriba el tipo de genero de la pelicula."
-				},
-				duration: {
-					required: true,
-					pattern: 'number',
-					msg:"Por favor escriba la duracion de la pelicula."
-				},
-				sinopsis:{
-					required: true,
-					msg:"Por favor escriba la sinopsis de la pelicula."
-				}
-
-			
+			validate:function(attrs, options) {
+				//console.log('entro en validate',options.error);
+				//return "no se guardo";
+				console.log(attrs.duration);
+			    if ( isNaN(attrs.duration) ) {
+			      console.log("fallo la duracion");
+			      return "can't end before it starts";
+			    }
+			  
 			},
 
 			initialize: function () {
-				/* No sirve porque cambia el cid por el id pero en el dom ya existe el id no el cid.
-				this.on("add", function(){
-						//var title = this.get("title");
-						this.id = this.cid;
-						console.log(this);
-				});*/
-			
 				
 			}
 		});

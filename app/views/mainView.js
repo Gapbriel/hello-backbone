@@ -55,7 +55,7 @@ define(['jquery',
 
                 this.formView.collectionMovies = listMovies;
 
-                this.formView.model = new ModelMovie;  
+                this.formView.modelMovie = new ModelMovie;  
 
                 this.formView.render();
                 

@@ -3,7 +3,7 @@ define(['jquery',
 	    'backbone',
 	    'views/mainView',
 	    'collections/movies',
-	    'models/movie'
+	    'models/movie',
 ], function( $, _, Backbone, MainView ){
 
 	var AppRouter = Backbone.Router.extend({

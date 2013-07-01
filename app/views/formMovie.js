@@ -5,7 +5,6 @@ define( [
   'collections/movies',
   'models/movie',   
   'text!templates/formMovie.html',
-  'vendor/backbone-validation'
 	], function( $, _, Backbone, CollectionMovies, ModelMovie,  Template) {
 
     var collection = new CollectionMovies;
@@ -20,15 +19,10 @@ define( [
             'click .cancel' : 'cancelMovie'
 
           },
-          initialize: function(){  
-            this.model = new ModelMovie();
-             console.log(this.model)
-             Backbone.Validation.bind(this);
-           },
-
+          
           render: function() {
                        
-            this.$el.html( _.template( Template, this.model.attributes ) ); 
+            this.$el.html( _.template( Template, this.modelMovie.attributes ) ); 
            
             return this;
           
@@ -36,25 +30,24 @@ define( [
 
           addMovie: function () {
 
-               // nModel = this.modelMovie;
-                
                 if( this.$el.find('#id').val() != "" ){
+                      
                       console.log('editando movie');  
-                      this.model.attributes = ({  id : $('#id').val(),
+
+                      this.modelMovie.attributes = ({  id : $('#id').val(),
                                               title : $('#title').val(),
                                               genre : $('#genre').val(),
                                               sinopsis : $('#sinopsis').val(),
                                               duration : $('#duration').val()
                                           });                      
                       
-                       //nModel.save();
-                        if(this.model.save()){
-                         window.location.hash = "/listMovies";
-                         console.log('success');
-                        }
-                        else {
-                          console.log('error');//mostrar error
-                        } 
+                   this.modelMovie.save()
+                    /*if(this.modelMovie.save()){
+                      window.location.hash = "/listMovies";
+                      console.log('success');
+                    }else {
+                      console.log('error');//mostrar error
+                    } */
                  
                  }else{
                  
@@ -65,20 +58,16 @@ define( [
                                                   duration : $('#duration').val()
                                                 });
                    
-                    this.collectionMovies.add(this.model);
-                    if(this.model.save()){
-                         window.location.hash = "/listMovies";
-                         console.log('success');
-                        }
-                        else {
-                          console.log('error');//mostrar error
-                        } 
-                    //newModel.save();   
-                                
+                    this.collectionMovies.add(newModel);
+                    newModel.save()
+                    /*if(newModel.save()){
+                      window.location.hash = "/listMovies";
+                      console.log('success');
+                    }else {
+                      console.log('error');//mostrar error
+                    } */
                     this.cleanForm();
                 }
-               
-                
 
             },
 
