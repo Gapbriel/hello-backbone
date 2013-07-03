@@ -35,24 +35,38 @@ app.configure( function() {
 });
 
 // insert
-app.post('/movie', function (req, res) {
-    console.log(req);
+app.put('/movie', function (req, res) {
+
   var doc = new Movie(req.body);
   doc.save(function (err, doc) {
-
+    console.log(doc);
     if (!err) {
+
       res.send(doc);
-    }else {
+    } else {
+
       res.send('{"success":false}');
     }
   });
 });
 
 
+app.get('/listMovies', function ( req, res) {
+
+    return Movie.find( function ( err, movie ) { 
+        console.log('buscando movies ', err, ' movies:',movie);
+        if( !err ){
+            return response.send( movie );
+        }else{
+            return console.log( err );
+        }
+    });
+});
+
 //Start server
 var port = process.env.PORT || 4711;
 app.listen( port, function() {
-    console.log( 'Express server listening on port %d in %s mode', port, app.settings.env );
-    console.log('application_root ',application_root);
-    console.log('__ ',__dirname);
+    
+console.log( 'Express server listening on port %d in %s mode', port, app.settings.env );
+
 });

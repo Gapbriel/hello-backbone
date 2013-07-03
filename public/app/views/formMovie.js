@@ -62,13 +62,10 @@ define( [
                     
                     $.ajax({
                             url: '/movie',
-                            type: 'post',
+                            type: 'put',
                             data: newModel.attributes,
                             success: function( data, textStatus, jqXHR ) {
                                 console.log( 'Post response:', data);
-                                console.dir( data );
-                                console.log( textStatus );
-                                console.dir( jqXHR );
                             }
                     });
 
