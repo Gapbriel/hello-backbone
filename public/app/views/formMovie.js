@@ -59,13 +59,20 @@ define( [
                                                 });
                    
                     this.collectionMovies.add(newModel);
-                    newModel.save()
-                    /*if(newModel.save()){
-                      window.location.hash = "/listMovies";
-                      console.log('success');
-                    }else {
-                      console.log('error');//mostrar error
-                    } */
+                    
+                    $.ajax({
+                            url: '/movie',
+                            type: 'post',
+                            data: newModel.attributes,
+                            success: function( data, textStatus, jqXHR ) {
+                                console.log( 'Post response:', data);
+                                console.dir( data );
+                                console.log( textStatus );
+                                console.dir( jqXHR );
+                            }
+                    });
+
+
                     this.cleanForm();
                 }
 

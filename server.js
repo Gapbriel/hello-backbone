@@ -34,6 +34,20 @@ app.configure( function() {
     app.use( express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
+// insert
+app.post('/movie', function (req, res) {
+    console.log(req);
+  var doc = new Movie(req.body);
+  doc.save(function (err, doc) {
+
+    if (!err) {
+      res.send(doc);
+    }else {
+      res.send('{"success":false}');
+    }
+  });
+});
+
 
 //Start server
 var port = process.env.PORT || 4711;
