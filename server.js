@@ -4,6 +4,15 @@ var application_root = __dirname,
     path = require( 'path' ), //Utilities for dealing with file paths
     mongoose = require( 'mongoose' ); //MongoDB integration
 
+mongoose.connect('mongodb://localhost/gmnm');
+var Schema = mongoose.Schema;
+var Movie = mongoose.model('Movie', new Schema({
+  title: String,
+  duration: Number,
+  genre: String,
+  sinopsis: String
+}));
+
 //Create server
 var app = express();
 
@@ -24,6 +33,7 @@ app.configure( function() {
     //Show all errors in development
     app.use( express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
+
 
 //Start server
 var port = process.env.PORT || 4711;
