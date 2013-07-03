@@ -1,0 +1,14 @@
+{
+    "name": "hello-backbone",
+    "version": "0.0.1",
+    "description": "A simple list of movies application using Backbone",
+    "dependencies": {
+        "express": "~3.1.0",
+        "path": "~0.4.9",
+        "mongoose": "~3.5.5"
+    },
+    "scripts": {
+    "start": "server",
+    }
+
+}
