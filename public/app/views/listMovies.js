@@ -20,7 +20,7 @@ define([
 
 	            this.TableMovie();
 				
-				this.PageFooter();
+				//this.PageFooter();
 
 	            return this;
             },
@@ -29,7 +29,7 @@ define([
             	
             	var compiledTemplate = _.template( Template );                                
 
-				var items = this.collectionMovies.pagination(pagesCount,currentPage);
+				var items = this.collectionMovies;
 				
 				this.$el.html(compiledTemplate({
 	                

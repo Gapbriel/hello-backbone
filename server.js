@@ -7,11 +7,11 @@ var application_root = __dirname,
 mongoose.connect('mongodb://localhost/gmnm');
 var Schema = mongoose.Schema;
 var Movie = mongoose.model('Movie', new Schema({
-  title: String,
-  duration: Number,
-  genre: String,
-  sinopsis: String
-}));
+                                                  title: String,
+                                                  duration: Number,
+                                                  genre: String,
+                                                  sinopsis: String
+                                                }));
 
 //Create server
 var app = express();
@@ -39,28 +39,29 @@ app.put('/movie', function (req, res) {
 
   var doc = new Movie(req.body);
   doc.save(function (err, doc) {
-    console.log(doc);
-    if (!err) {
 
+    if (!err) {
       res.send(doc);
     } else {
 
       res.send('{"success":false}');
     }
+
   });
+
 });
 
 
 app.get('/listMovies', function ( req, res) {
 
-    return Movie.find( function ( err, movie ) { 
-        console.log('buscando movies ', err, ' movies:',movie);
+    return Movie.find( function ( err, movie ) {       
         if( !err ){
-            return response.send( movie );
+            return res.send( movie );
         }else{
             return console.log( err );
         }
     });
+
 });
 
 //Start server

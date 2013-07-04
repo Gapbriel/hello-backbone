@@ -64,30 +64,12 @@ define(['jquery',
             },
 
             ShowListView: function (page){
+                listMovies.fetch();
+                console.log(listMovies);
+                this.listView.collectionMovies = listMovies;
 
-                $.get('/listMovies',
-                       function( data, textStatus, jqXHR ) {
-                            console.log( 'Get response:' );
-                            console.log('---------------DATA----------');
-                            console.dir( data );
-                            console.log('---------------TEXT STATUS----------');
-                            console.log( textStatus );
-                            console.log('---------------jqXHR----------');
-                            console.dir( jqXHR );
-
-                            /*listMovies.fetch();
-            
-                            listMovies.sort();*/
-
-                            this.listView.collectionMovies = data;//listMovies;
-
-                            this.$el.html(this.listView.render(page).$el);
-                        }
-                );
-                
+                this.$el.html(this.listView.render(page).$el);                
             }
-
-
             
     });
 
