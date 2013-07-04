@@ -69,7 +69,8 @@ define(['jquery',
                    
                     success: function(){
                         console.log(arguments);
-                        that.listView.items = arguments[1];//listMovies.models;
+                        listMovies.models = arguments[1];
+                        that.listView.items = listMovies.models;
                         that.$el.html(that.listView.render(page).$el);         
                     },
                     error:function () {
