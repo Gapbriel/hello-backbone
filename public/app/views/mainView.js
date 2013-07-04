@@ -64,14 +64,18 @@ define(['jquery',
             },
 
             ShowListView: function (page){
+                var that = this;
                 listMovies.fetch({
+                    success: function(){
+                        console.log('sucess',listMovies.models); 
+                        that.listView.items = listMovies.models;
+                        that.$el.html(that.listView.render(page).$el);         
+                    },
                     error:function () {
                         console.log(arguments);
                     }
                 });
-                this.listView.collectionMovies = listMovies;
-
-                this.$el.html(this.listView.render(page).$el);                
+                      
             }
             
     });

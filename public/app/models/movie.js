@@ -8,13 +8,16 @@ define([
 
 		var Movie = Backbone.Model.extend({
 			defaults:{
-				_id:'',
+				id:'',
 				title:'',
 				genre:'',
 				duration:'',
 				sinopsis:''
 			},
-
+			parse:function (response) {	            
+	            response.id = response._id;
+	            return response;
+	        },
 			validate:function(attrs, options) {
 				//console.log('entro en validate',options.error);
 				//return "no se guardo";

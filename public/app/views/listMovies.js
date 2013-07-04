@@ -12,6 +12,7 @@ define([
 			
 			render:function(page){
 
+
 				if( page === undefined)
 					currentPage = 1;
 				else
@@ -22,17 +23,18 @@ define([
 				//this.PageFooter();
 
 	            return this;
+
             },
 
             TableMovie: function (){
-            	console.log('TableMovie ',this.collectionMovies);
-            	var compiledTemplate = _.template( Template );                                
+            	
+            	var compiledTemplate = _.template( Template );  
 
-				var items = this.collectionMovies;
+				//var items = this.collectionMovies.models.toJSON();
 				
 				this.$el.html(compiledTemplate({
 	                
-	                movies: items//this.collectionMovies.toJSON()
+	                movies: this.items
 
 	            }));
 
