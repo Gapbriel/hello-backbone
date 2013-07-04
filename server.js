@@ -36,27 +36,61 @@ app.configure( function() {
 
 // insert
 app.put('/movie', function (req, res) {
-
+  
   var doc = new Movie(req.body);
+  
   doc.save(function (err, doc) {
 
     if (!err) {
       res.send(doc);
+    
     } else {
 
       res.send('{"success":false}');
+    
     }
 
   });
 
 });
 
+// update
+app.put('/editMovie', function (req, res) {
+
+  Movie.findById(req.body.id, function (err, doc) {
+
+    if (!err) {
+
+      for (var i in req.body) {
+
+        if (i !== '_id') {
+          doc[i] = req.body[i];
+        }
+      }
+
+      doc.save(function (err, doc) {
+
+        if (!err) {
+
+          res.send(doc);
+        }
+        else {
+
+          res.send('{"success":false}');
+        }
+      });
+    }
+    else {
+
+      res.send('{"success":false}');
+    }
+  });
+});
 
 app.get('/listMovies', function ( req, res) {
 
     return Movie.find( function ( err, movie ) {       
         if( !err ){
-            console.log(movie);
             return res.send( movie );
         }else{
             return console.log( err );

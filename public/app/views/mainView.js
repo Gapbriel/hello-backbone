@@ -8,7 +8,7 @@ define(['jquery',
         'views/listMovies'
         ],function($, _, Backbone, MainView, CollectionMovies, ModelMovie, FormView, ListView){
 
-  var listMovies = new CollectionMovies;
+    var listMovies = new CollectionMovies;
 
     var MainView = Backbone.View.extend({
             
@@ -52,7 +52,7 @@ define(['jquery',
             },
 
             ShowFormView: function (){
-
+                
                 this.formView.collectionMovies = listMovies;
 
                 this.formView.modelMovie = new ModelMovie;  
@@ -65,10 +65,11 @@ define(['jquery',
 
             ShowListView: function (page){
                 var that = this;
+                
                 listMovies.fetch({
                    
                     success: function(){
-                        console.log(arguments);
+                        
                         listMovies.models = arguments[1];
                         that.listView.items = listMovies.models;
                         that.$el.html(that.listView.render(page).$el);         
@@ -77,7 +78,8 @@ define(['jquery',
                         console.log(arguments);
                     }
                 });
-                      
+                
+                
             }
             
     });

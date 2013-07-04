@@ -40,14 +40,15 @@ define( [
                                               sinopsis : $('#sinopsis').val(),
                                               duration : $('#duration').val()
                                           });                      
-                      
-                   this.modelMovie.save()
-                    /*if(this.modelMovie.save()){
-                      window.location.hash = "/listMovies";
-                      console.log('success');
-                    }else {
-                      console.log('error');//mostrar error
-                    } */
+                    $.ajax({
+                            url: '/editMovie/',
+                            type: 'put',
+                            data: this.modelMovie.attributes,
+                            success: function( data, textStatus, jqXHR ) {
+                                console.log( 'termino de ediar:', data);
+                                console.log('textStatus', textStatus);
+                            }
+                    }); 
                  
                  }else{
                  
@@ -80,7 +81,7 @@ define( [
                 if ( $('.cancel').html() === "finalizar" )
                    window.location.hash = "/listMovies";
                 else                   
-                   window.location.hash = "#";
+                   window.location.hash = "";
                 //this.$el.html('');    
             
             },
