@@ -6,9 +6,8 @@ define([
 	'models/movie'	
 	], function($,_, Backbone ,LocalStorage , Movie){
 		var Movies = Backbone.Collection.extend({
-			
 			model: Movie,
-			url:'/listMovies'
+			url:'/listMovies'//read server side collections
 		});
 		
 		return Movies;

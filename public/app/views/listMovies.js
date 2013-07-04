@@ -2,10 +2,9 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'models/movie',
 	'text!../templates/listsMovies.html',
 	'text!../templates/footerPagination.html'
-	], function($,_, Backbone, Movie,Template, PageTemplate){
+	], function($,_, Backbone, Template, PageTemplate){
 		
 		var pagesCount = 3, currentPage;  
 		
@@ -26,7 +25,7 @@ define([
             },
 
             TableMovie: function (){
-            	
+            	console.log('TableMovie ',this.collectionMovies);
             	var compiledTemplate = _.template( Template );                                
 
 				var items = this.collectionMovies;

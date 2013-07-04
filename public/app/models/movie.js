@@ -8,7 +8,7 @@ define([
 
 		var Movie = Backbone.Model.extend({
 			defaults:{
-				id:'',
+				_id:'',
 				title:'',
 				genre:'',
 				duration:'',

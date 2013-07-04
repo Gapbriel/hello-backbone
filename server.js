@@ -56,6 +56,7 @@ app.get('/listMovies', function ( req, res) {
 
     return Movie.find( function ( err, movie ) {       
         if( !err ){
+            console.log(movie);
             return res.send( movie );
         }else{
             return console.log( err );
