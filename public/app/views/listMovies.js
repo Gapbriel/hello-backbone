@@ -29,8 +29,6 @@ define([
             TableMovie: function (){
             	
             	var compiledTemplate = _.template( Template );  
-
-				//var items = this.collectionMovies.models.toJSON();
 				
 				this.$el.html(compiledTemplate({
 	                

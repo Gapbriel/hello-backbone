@@ -66,9 +66,10 @@ define(['jquery',
             ShowListView: function (page){
                 var that = this;
                 listMovies.fetch({
+                   
                     success: function(){
-                        console.log('sucess',listMovies.models); 
-                        that.listView.items = listMovies.models;
+                        console.log(arguments);
+                        that.listView.items = arguments[1];//listMovies.models;
                         that.$el.html(that.listView.render(page).$el);         
                     },
                     error:function () {

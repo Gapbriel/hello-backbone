@@ -8,9 +8,7 @@ define([
 		var Movies = Backbone.Collection.extend({
 			model: Movie,
 			url:'/listMovies',//read server side collections
-			parse: function(response) {
-			    return response.results;
-			}
+			
 		});
 		
 		return Movies;
