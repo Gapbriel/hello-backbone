@@ -99,6 +99,24 @@ app.get('/listMovies', function ( req, res) {
 
 });
 
+//delete Movie
+ 
+app.delete('/delete', function(req, res){
+   /* console.log('Deleting movie with id: ' + req.params.id);
+    return Movie.findById(req.params.id, function(err, movie){
+        return movie.remove(function(err){
+            if(!err){
+                console.log('Movie removed');
+                return res.send('');
+            } else {
+                console.log(err);
+            }
+        });
+    }); */
+  console.log('server delete ', req.body.id);
+
+});
+
 //Start server
 var port = process.env.PORT || 4711;
 app.listen( port, function() {
