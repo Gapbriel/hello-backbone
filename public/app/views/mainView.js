@@ -44,17 +44,22 @@ define(['jquery',
 
             DeleteMovie: function (id) {
               /*  console.log('entro en eliminar');
-                var nModel = listMovies.get(id);           
-                nModel.destroy();
-                listMovies.remove(nModel);
-                this.ShowListView(); before using mongoDB and Node.js*/
+                 before using mongoDB and Node.js*/
                 $.ajax({
                         url: '/delete/',
                         type: 'delete',
                         data: {'id':id},
                         success: function( data, textStatus, jqXHR ) {
-                            console.log( 'termino de eliminar:', data);
-                            console.log('textStatus', textStatus);
+                            if (data != ''){
+                                console.log(data);
+                            }else{     
+                                /*var nModel = listMovies.get(id);           
+                                nModel.destroy();
+                                listMovies.remove(nModel);
+                                this.ShowListView();
+                                */
+                            }
+
                         }
                 });
 

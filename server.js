@@ -102,18 +102,19 @@ app.get('/listMovies', function ( req, res) {
 //delete Movie
  
 app.delete('/delete', function(req, res){
-   /* console.log('Deleting movie with id: ' + req.params.id);
-    return Movie.findById(req.params.id, function(err, movie){
+  
+    return Movie.findById(req.body.id, function(err, movie){
+        console.log('busqueda',movie);
         return movie.remove(function(err){
             if(!err){
                 console.log('Movie removed');
                 return res.send('');
             } else {
+              return res.send(err);
                 console.log(err);
             }
         });
-    }); */
-  console.log('server delete ', req.body.id);
+    });   
 
 });
 
