@@ -50,7 +50,7 @@ define(['jquery',
                         type: 'delete',
                         data: {'id':id},
                         success: function( data, textStatus, jqXHR ) {
-                            if (data != ''){
+                            if (data){
                                 console.log(data);
                             }else{     
                                 /*var nModel = listMovies.get(id);           
