@@ -5,6 +5,7 @@ require.config({
     underscore: 'vendor/underscore',
     backbone: 'vendor/backbone-min',
     localstorage: "vendor/backbone.localStorage-min",
+    bootstrap: 'vendor/bootstrap',
    
   },
    shim: {
