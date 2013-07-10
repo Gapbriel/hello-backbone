@@ -1,27 +1,33 @@
 <div id="formContainer" class="form">
-<form id="movies" action="">
-		<input type="hidden" class="data" id="id" name="id" value="<%= id %>" required  >
-	<div>
-		<label>título:</label>
-		<input class="data" type="text" id="title" name="title" value="<%= title %>" required  >
+<form class="form-horizontal" id="movies" action="">
+	<input type="hidden" class="data" id="id" name="id" value="<%= id %>" required  >
+	<div class="control-group">
+		<label class="control-label">Título:</label>
+		<div class="controls">
+			<input class="data" type="text" id="title" name="title" value="<%= title %>" required  >
+		</div>	
 	</div>
-	<div>
-		<label>genero:</label>
-		<input class="data" type="text" id="genre" name="genre" value="<%= genre %>" required>
+	<div class="control-group">
+		<label class="control-label">Genero:</label>
+		<div class="controls">	
+			<input class="data" type="text" id="genre" name="genre" value="<%= genre %>" required>
+		</div>
 	</div> 	
-	<div>
-		<label>duración:</label>
-		<input class="data" type="text" id="duration" name="duration" value="<%= duration %>" required>
+	<div class="control-group">
+		<label class="control-label">Duración:</label>
+		<div class="controls">
+			<input class="data" type="text" id="duration" name="duration" value="<%= duration %>" required>
+		</div>
 	</div>
-	<div>
-		<label>sinopsis</label>
-		<div class="divArea">
+	<div class="control-group">
+		<label class="control-label">Sinopsis</label>
+		<div class="controls">
 			<textarea class="data" type="text" id="sinopsis" name="sinopsis" required><%= sinopsis %></textarea>
 		</div> <div class="error-msg"></div>
 	</div>
 	<!--<a href="/#addMovie" class="button submit">agregar</a>
 	<a href="/#listMovies" class="button cancel">cancelar</a>-->
-	<button type="button" class="button submit">agregar</button>
-	<button type="button" class="button cancel">cancelar</button>
+	<button type="button" class="btn submit">Agregar</button>
+	<button type="button" class="btn button cancel">Cancelar</button>
 </form>
 </div>

@@ -11,11 +11,11 @@ h1{
 }
 
 .form{
-	padding: 12px;
+	padding: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #fff;
-	width: 400px;
+	width: 500px;
 	-webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -25,7 +25,7 @@ h1{
 	padding-bottom: 5px;
 }
 .form label{
-	text-align: right;
+	text-align: left;
 	width: 300px;
 	
 }
@@ -36,40 +36,6 @@ input[type="number"],input[type="text"], textarea{
 }
 input[type="number"],input[type="text"]{
 	border-bottom: 1px solid #ccc;
-}
-.button{
-	-webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    background-color: #999;
-    border: none;
-    padding: 2px 8px 3px 8px;
-    color: #FFF;
-    font-size: 14px;
-    text-transform: capitalize;
-    text-decoration: none;
-
-}
-.button:hover{
-	color: #CCC;
-	background-color: #666;
-}
-
-.buttonIndex{
-	float: center;
-}
-
-textarea{
-	width: 95%;
-	height: 100%;
-}
-.divArea{
-	width: 90%;
-	padding: 2px;
-	-webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
 }
 
 .container-movies {

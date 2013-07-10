@@ -88,7 +88,7 @@ define( [
 
             cleanForm: function () {
               
-              $('.cancel').html('finalizar');
+              $('.cancel').html('Finalizar');
               
               $('.data').val('');
             
