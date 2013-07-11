@@ -108,7 +108,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', end
 }
 
 .error-msg{
-	color: red;
-	float: right;
-	margin-top: 10px;
+	float: center;
+	margin: 10px;
+	display: none;
 }

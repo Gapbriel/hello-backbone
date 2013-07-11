@@ -23,22 +23,25 @@ define([
 				//return "no se guardo";
 				//console.log(attrs.duration);
 			    
-				if ( attrs.title=== "" )  return "debe ingresar un título";
+				if ( attrs.title=== "" )  return "Debe ingresar un título";
 
-			    if ( attrs.genre === "" ) return "debe ingresar un genero";
+			    if ( attrs.genre === "" ) return "Debe ingresar un genero";
 
 			    if ( isNaN(attrs.duration) 
-			    	 || attrs.duration === "" ) return "el campo duración no es numerico";
+			    	 || attrs.duration === "" ) return "El campo duración no es numerico";
 
-			    if ( attrs.sinopsis === "" ) return "debe ingresar una sinopsis";
+			    if ( attrs.sinopsis === "" ) return "Debe ingresar una sinopsis";
 			  
 			},
 			save: function (){		
 				var validateResponse = this.validate(this.attributes);					
 				
-				if ( validateResponse ){	
-				
-					console.log('Hay un error en el formulario: ',validateResponse);
+				if ( validateResponse ){
+					var errorMsg= 'Hay un error en el formulario: '+ validateResponse;
+
+					$('.error-msg').append(errorMsg).show();
+					console.log(this.el);
+					
 				
 				}else{
 
