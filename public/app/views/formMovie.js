@@ -32,46 +32,27 @@ define( [
 
                 if( this.$el.find('#id').val() != "" ){
                       
-                      console.log('editando movie');  
+                    this.modelMovie.attributes = ({ id : $('#id').val(),
+                                                    title : $('#title').val(),
+                                                    genre : $('#genre').val(),
+                                                    sinopsis : $('#sinopsis').val(),
+                                                    duration : $('#duration').val()
+                                                });
 
-                      this.modelMovie.attributes = ({  id : $('#id').val(),
-                                              title : $('#title').val(),
-                                              genre : $('#genre').val(),
-                                              sinopsis : $('#sinopsis').val(),
-                                              duration : $('#duration').val()
-                                          });                      
-                    $.ajax({
-                            url: '/editMovie/',
-                            type: 'put',
-                            data: this.modelMovie.attributes,
-                            success: function( data, textStatus, jqXHR ) {
-                                console.log( 'termino de ediar:', data);
-                                console.log('textStatus', textStatus);
-                            }
-                    }); 
+                    this.modelMovie.save(); 
                  
                  }else{
                  
-                   var newModel = new ModelMovie({id : parseInt(Date.now()),
-                                                  title : $('#title').val(),
-                                                  genre : $('#genre').val(),
-                                                  sinopsis : $('#sinopsis').val(),
-                                                  duration : $('#duration').val()
+                   var newModel = new ModelMovie({ id : 0,
+                                                   title : $('#title').val(),
+                                                   genre : $('#genre').val(),
+                                                   sinopsis : $('#sinopsis').val(),
+                                                   duration : $('#duration').val()
                                                 });
-                   
+                    newModel.save();
+
                     this.collectionMovies.add(newModel);
                     
-                    $.ajax({
-                            url: '/movie',
-                            type: 'put',
-                            data: newModel.attributes,
-                            success: function( data, textStatus, jqXHR ) {
-                                console.log( 'Post response:', data);
-                            }
-                    });
-
-
-                    this.cleanForm();
                 }
 
             },

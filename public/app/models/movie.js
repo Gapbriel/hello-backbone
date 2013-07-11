@@ -14,14 +14,14 @@ define([
 				duration:'',
 				sinopsis:''
 			},
-			parse:function (response) {	            
+			parse: function (response) {	            
 	            response.id = response._id;
 	            return response;
 	        },
-			validate:function(attrs, options) {
-				//console.log('entro en validate',options.error);
+			validate: function(attrs, options) {
+				console.log('entro en validate',options.error);
 				//return "no se guardo";
-				console.log(attrs.duration);
+				//console.log(attrs.duration);
 			    
 				if ( attrs.title=== "" ) {
 			     
@@ -42,16 +42,32 @@ define([
 			      
 			      return "write a sinopsis you mother fucker!";
 			    }
-
 			  
+			},
+			save: function (){							
+					
+				var urlOperation =  this.attributes.id ? '/editMovie' : '/movie';
+
+				$.ajax({
+                    url: urlOperation,
+                    type: 'put',
+                    data: this.attributes,
+                    success: function( data, textStatus, jqXHR ) {
+                        console.log( 'Post response:', data);
+                    }
+                });
+			
 			},
 
 			initialize: function () {
+
 				this.on("invalid", function(model, error){
-            	 $('.error-msg').text('Error en un campo').show();
+            	 //$('.alert').append(error).show();
+            	 alert(error);
         		});
 
 			}
+		
 		});
 
 		return Movie;
