@@ -5,8 +5,9 @@ define(['jquery',
         'collections/movies',
         'models/movie',
         'views/formMovie',
-        'views/listMovies'
-        ],function($, _, Backbone, MainView, CollectionMovies, ModelMovie, FormView, ListView){
+        'views/listMovies',
+        'views/message'
+        ],function($, _, Backbone, MainView, CollectionMovies, ModelMovie, FormView, ListView, MessageView){
 
     var listMovies = new CollectionMovies;
 
@@ -20,6 +21,8 @@ define(['jquery',
                   this.formView = new FormView;
                   
                   this.listView = new ListView;
+
+                  this.messageView = new MessageView;
             
             },
 
@@ -93,6 +96,10 @@ define(['jquery',
                     }
                 });
                 
+                
+            },
+
+            ShowMessage: function(message){
                 
             }
             
