@@ -57,6 +57,10 @@ define( [
 
             },
 
+            showError: function(){
+                
+            },
+
             cancelMovie: function () {
 
                 if ( $('.cancel').html() === "finalizar" )
