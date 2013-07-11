@@ -19,43 +19,41 @@ define([
 	            return response;
 	        },
 			validate: function(attrs, options) {
-				console.log('entro en validate',options.error);
+				//console.log('entro en validate',options.error);
 				//return "no se guardo";
 				//console.log(attrs.duration);
 			    
-				if ( attrs.title=== "" ) {
-			     
-			      return "write a title!";
-			    }
+				if ( attrs.title=== "" )  return "debe ingresar un título";
 
-			    if ( attrs.genre === "" ) {
-			      
-			      return "write a genre you mother fucker!";
-			    }
+			    if ( attrs.genre === "" ) return "debe ingresar un genero";
 
-			    if ( isNaN(attrs.duration) || attrs.duration === "" ) {
-			      
-			      return "can't end before it starts";
-			    }
+			    if ( isNaN(attrs.duration) 
+			    	 || attrs.duration === "" ) return "el campo duración no es numerico";
 
-			    if ( attrs.sinopsis === "" ) {
-			      
-			      return "write a sinopsis you mother fucker!";
-			    }
+			    if ( attrs.sinopsis === "" ) return "debe ingresar una sinopsis";
 			  
 			},
-			save: function (){							
-					
-				var urlOperation =  this.attributes.id ? '/editMovie' : '/movie';
+			save: function (){		
+				var validateResponse = this.validate(this.attributes);					
+				
+				if ( validateResponse ){	
+				
+					console.log('Hay un error en el formulario: ',validateResponse);
+				
+				}else{
 
-				$.ajax({
-                    url: urlOperation,
-                    type: 'put',
-                    data: this.attributes,
-                    success: function( data, textStatus, jqXHR ) {
-                        console.log( 'Post response:', data);
-                    }
-                });
+					var urlOperation =  this.attributes.id ? '/editMovie' : '/movie';
+
+					$.ajax({
+	                    url: urlOperation,
+	                    type: 'put',
+	                    data: this.attributes,
+	                    success: function( data, textStatus, jqXHR ) {
+	                        console.log( 'Post response:', data);
+	                    }
+	                });
+
+				}
 			
 			},
 
