@@ -35,7 +35,7 @@ define([
 			},
 			save: function (){		
 				var validateResponse = this.validate(this.attributes);					
-				
+				console.log('window.hash', validateResponse);
 				if ( validateResponse ){
 					var errorMsg= 'Hay un error en el formulario: '+ validateResponse;
 

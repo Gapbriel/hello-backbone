@@ -100,7 +100,7 @@ define(['jquery',
             },
 
             ShowMessage: function(message){
-                
+                this.messageView.render();
             }
             
     });

@@ -15,7 +15,7 @@ define(['jquery',
 			"delete/:id" : "deleteMovie",//elimina desde la coleccion				
 			"edit/:id"	 : "editMovie", 	
 			"*actions"   : "defaultAction",
-			"message"    : "showMessage" //muestra mensaje	
+			"message/:msg"    : "showMessage" //muestra mensaje	
 		},
 
 	}); 		
