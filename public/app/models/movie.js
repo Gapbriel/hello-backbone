@@ -37,9 +37,9 @@ define([
 				var validateResponse = this.validate(this.attributes);					
 				console.log('window.hash', validateResponse);
 				if ( validateResponse ){
-					var errorMsg= 'Hay un error en el formulario: '+ validateResponse;
+					//var errorMsg= 'Hay un error en el formulario: '+ validateResponse;
 
-					$('.error-msg').append(errorMsg).show();
+					$('#myModal').modal('show');
 					console.log(this.el);
 					
 				
