@@ -35,14 +35,19 @@ define(['jquery',
             },
 
             EditMovie: function (id) {
-                this.formView.modelMovie = listMovies.get(id);                   
+                var movieSelect = listMovies.get(id);                   
+                if( movieSelect ){
+                    this.formView.modelMovie = movieSelect;
                 
-                this.formView.render();
+                    this.formView.render();
+                    
+                    $('#formContainer .cancel').html('finalizar');
+                    
+                    $('#formContainer').find('input[type=text]').filter(':first').focus();    
+                }else{
+                    console.log('no se pudo encontrar la película seleccionada id:',id);
+                }
                 
-                $('#formContainer .cancel').html('finalizar');
-                
-                $('#formContainer').find('input[type=text]').filter(':first').focus();
-
             },
 
             DeleteMovie: function (id) {
