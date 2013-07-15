@@ -14,8 +14,7 @@ define(['jquery',
 			"showMovieForm"	 : "showForm", //para que muestre el form
 			"delete/:id" : "deleteMovie",//elimina desde la coleccion				
 			"edit/:id"	 : "editMovie", 	
-			"*actions"   : "defaultAction",
-			"message/:msg"    : "showMessage" //muestra mensaje	
+			"*actions"   : "defaultAction",	
 		},
 
 	}); 		
@@ -49,17 +48,11 @@ define(['jquery',
 		
 		});
 
-		app_router.on(' route:showMessage ', function(message){
-
-			mainView.ShowMessage(message);
-		});
-        
 		app_router.on( 'route:defaultAction', function( actions ){		
 			
 			mainView.render();
 			
 		});
-
 
         Backbone.history.start();
        

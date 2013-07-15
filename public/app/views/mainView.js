@@ -6,8 +6,8 @@ define(['jquery',
         'models/movie',
         'views/formMovie',
         'views/listMovies',
-        'views/message'
-        ],function($, _, Backbone, MainView, CollectionMovies, ModelMovie, FormView, ListView, MessageView){
+        ],function($, _, Backbone, MainView, CollectionMovies, ModelMovie, 
+                   FormView, ListView){
 
     $.fn.serializeObject = function() {
           var jsonReturn = {};
@@ -25,6 +25,7 @@ define(['jquery',
           return jsonReturn;
     };        
 
+
     var listMovies = new CollectionMovies;
 
     var MainView = Backbone.View.extend({
@@ -38,8 +39,6 @@ define(['jquery',
                   
                   this.listView = new ListView;
 
-                  this.messageView = new MessageView;
-            
             },
 
             render: function (){
@@ -120,10 +119,6 @@ define(['jquery',
                 
             },
 
-            ShowMessage: function(message){
-                this.messageView.render();
-            }
-            
     });
 
     return MainView;

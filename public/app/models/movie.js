@@ -35,40 +35,35 @@ define([
 			},
 			save: function (){		
 				var validateResponse = this.validate(this.attributes);					
-				console.log('window.hash', validateResponse);
+				
 				if ( validateResponse ){
-					//var errorMsg= 'Hay un error en el formulario: '+ validateResponse;
 
-					$('#myModal').modal('show');
-					console.log(this.el);
-					
+					$('#message-text').html(validateResponse) ;
+        			$('#myModal').modal('show');
 				
 				}else{
-
+					var that = this;
 					var urlOperation =  this.attributes.id ? '/editMovie' : '/movie';
+					
+					var handResp = $.post(urlOperation,this.attributes);	
+					
+					handResp.done (function(data){
+						console.log('se guardo ', data.title);
+					});
 
-					$.ajax({
-	                    url: urlOperation,
-	                    type: 'put',
-	                    data: this.attributes,
-	                    success: function( data, textStatus, jqXHR ) {
-	                        console.log( 'Post response:', data);
-	                    }
-	                });
+					handResp.fail(function (error){
+						console.log(error);		
+					});
 
 				}
 			
 			},
 
-			initialize: function () {
-
-				this.on("invalid", function(model, error){
-            	 //$('.alert').append(error).show();
-            	 alert(error);
-        		});
-
+			openMessage: function (msg){
+				$('#message-text').html(msg);
+        		$('#myModal').modal('show');
 			}
-		
+
 		});
 
 		return Movie;

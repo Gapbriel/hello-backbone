@@ -42,9 +42,7 @@ define( [
                 if ( $('.cancel').html() === "finalizar" )
                    window.location.hash = "/listMovies";
                 else                   
-                   window.location.hash = "";
-                //this.$el.html('');    
-            
+                   window.location.hash = "";            
             },
 
             cleanForm: function () {
@@ -53,6 +51,10 @@ define( [
               
               $('.data').val('');
             
+            },
+            openMessage: function (msg){
+              $('#message-text').html(msg);
+              $('#myModal').modal('show');
             }
 
       });    

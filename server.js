@@ -26,10 +26,10 @@ app.configure( function() {
 });
 
 // insert
-app.put('/movie', appRoute.AddMovie);
+app.post('/movie', appRoute.AddMovie);
 
 // update
-app.put('/editMovie', appRoute.EditMovie);
+app.post('/editMovie', appRoute.EditMovie);
 
 app.get('/listMovies', appRoute.GetListMovies);
 
