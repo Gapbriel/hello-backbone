@@ -9,6 +9,22 @@ define(['jquery',
         'views/message'
         ],function($, _, Backbone, MainView, CollectionMovies, ModelMovie, FormView, ListView, MessageView){
 
+    $.fn.serializeObject = function() {
+          var jsonReturn = {};
+          var domArray = this.serializeArray();
+          $.each(domArray, function() {
+              if (jsonReturn[this.name] !== undefined) {
+                  if (!jsonReturn[this.name].push) {
+                      jsonReturn[this.name] = [jsonReturn[this.name]];
+                  }
+                  jsonReturn[this.name].push(this.value || '');
+              } else {
+                  jsonReturn[this.name] = this.value || '';
+              }
+          });
+          return jsonReturn;
+    };        
+
     var listMovies = new CollectionMovies;
 
     var MainView = Backbone.View.extend({

@@ -2,12 +2,8 @@ define( [
 	'jquery',
   'underscore',
   'backbone',
-  'collections/movies',
-  'models/movie',   
   'text!templates/formMovie.html',
-	], function( $, _, Backbone, CollectionMovies, ModelMovie,  Template) {
-
-    var collection = new CollectionMovies;
+	], function( $, _, Backbone,  Template) {
 
     	var FormMovieView = Backbone.View.extend({  
         
@@ -29,37 +25,17 @@ define( [
           },
 
           addMovie: function () {
-
-                if( this.$el.find('#id').val() != "" ){
+                
+                var formDom = this.$el.find('form');
+                
+                var attrs = formDom.serializeObject();
                       
-                    this.modelMovie.attributes = ({ id : $('#id').val(),
-                                                    title : $('#title').val(),
-                                                    genre : $('#genre').val(),
-                                                    sinopsis : $('#sinopsis').val(),
-                                                    duration : $('#duration').val()
-                                                });
+                this.modelMovie.set(attrs);
 
-                    this.modelMovie.save(); 
-                 
-                 }else{
-                 
-                   var newModel = new ModelMovie({ id : 0,
-                                                   title : $('#title').val(),
-                                                   genre : $('#genre').val(),
-                                                   sinopsis : $('#sinopsis').val(),
-                                                   duration : $('#duration').val()
-                                                });
-                    newModel.save();
-
-                    this.collectionMovies.add(newModel);
-                    
-                }
-
-            },
-
-            showError: function(){
+                this.modelMovie.save(); 
                 
             },
+
 
             cancelMovie: function () {
 
