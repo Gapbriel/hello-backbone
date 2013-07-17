@@ -50,7 +50,8 @@ define(['jquery',
             },
 
             EditMovie: function (id) {
-                var movieSelect = listMovies.get(id);                   
+                var movieSelect = listMovies.get(id);   
+
                 if( movieSelect ){
                     this.formView.modelMovie = movieSelect;
                 
@@ -59,6 +60,7 @@ define(['jquery',
                     $('#formContainer .cancel').html('finalizar');
                     
                     $('#formContainer').find('input[type=text]').filter(':first').focus();    
+                
                 }else{
                     console.log('no se pudo encontrar la película seleccionada id:',id);
                 }
@@ -66,25 +68,18 @@ define(['jquery',
             },
 
             DeleteMovie: function (id) {
-              /*  console.log('entro en eliminar');
-                 before using mongoDB and Node.js*/
-                $.ajax({
-                        url: '/delete/',
-                        type: 'delete',
-                        data: {'id':id},
-                        success: function( data, textStatus, jqXHR ) {
-                            if (data){
-                                console.log(data);
-                            }else{     
-                                /*var nModel = listMovies.get(id);           
-                                nModel.destroy();
-                                listMovies.remove(nModel);
-                                this.ShowListView();
-                                */
-                            }
-
-                        }
+                
+                var that = this;
+                
+                var handDelete = $.post('/delete',{id:id});
+                
+                handDelete.done( function() {
+                    that.ShowListView();
                 });
+
+                handDelete.fail ( function () { 
+                    console.log(arguments[1],':',arguments[2]);
+                });            
 
             },
 
@@ -100,7 +95,7 @@ define(['jquery',
 
             },
 
-            ShowListView: function (page){
+            ShowListView: function (){
                 var that = this;
                 
                 listMovies.fetch({
@@ -109,7 +104,7 @@ define(['jquery',
                         
                         listMovies.models = arguments[1];
                         that.listView.items = listMovies.models;
-                        that.$el.html(that.listView.render(page).$el);         
+                        that.$el.html(that.listView.render().$el);         
                     },
                     error:function () {
                         console.log(arguments);

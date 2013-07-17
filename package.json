@@ -8,7 +8,7 @@
         "mongoose": "~3.5.5"
     },
     "scripts": {
-    "start": "server",
+    "start": "app",
     }
 
 }

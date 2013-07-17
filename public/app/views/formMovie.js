@@ -37,12 +37,10 @@ define( [
             },
 
 
-            cancelMovie: function () {
+            cancelMovie: function () {     
 
-                if ( $('.cancel').html() === "finalizar" )
-                   window.location.hash = "/listMovies";
-                else                   
-                   window.location.hash = "";            
+              this.$el.find('#formContainer').remove();
+
             },
 
             cleanForm: function () {

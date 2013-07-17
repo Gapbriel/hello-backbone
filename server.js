@@ -26,7 +26,7 @@ app.configure( function() {
 });
 
 // insert
-app.post('/movie', appRoute.AddMovie);
+app.put('/movie', appRoute.AddMovie);
 
 // update
 app.post('/editMovie', appRoute.EditMovie);
@@ -34,7 +34,7 @@ app.post('/editMovie', appRoute.EditMovie);
 app.get('/listMovies', appRoute.GetListMovies);
 
 //delete Movie
-app.delete('/delete', appRoute.DeleteMovie);
+app.post('/delete', appRoute.DeleteMovie);
 
 //Start server
 var port = process.env.PORT || 4711;

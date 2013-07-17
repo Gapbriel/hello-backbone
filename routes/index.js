@@ -13,59 +13,45 @@ var Movie = mongoose.model('Movie', new Schema({
 
 // insert
 exports.AddMovie = function (req, res) {
+  console.log(req.body.id);
   
-  var doc = new Movie(req.body);
-  
-  doc.save(function (err, doc) {
+  var doc = new Movie();
 
-    if (!err) {
-      res.send(doc);
+  var resultSave = function (err, doc) {
+       
+          if (!err) {
+            console.log('se grabo');
+            res.send(doc);
+          
+          } else {
+
+            res.send('{"success":false}');
+          
+          }
+      }
     
-    } else {
+  if( req.body.id ){
 
-      res.send('{"success":false}');
-    
-    }
-
-  });
-
-};
-
-
-// update
-exports.EditMovie = function (req, res) {
-
-  Movie.findById(req.body.id, function (err, doc) {
-
-    if (!err) {
-
-      for (var i in req.body) {
-
-        if (i !== '_id') {
-          doc[i] = req.body[i];
-        }
+    Movie.findById(req.body.id, function (err, doc) {
+      
+      if (!err) {
+        doc.set(req.body);    
+        console.log('editando: ',doc);
+        doc.save(resultSave);
       }
 
-      doc.save(function (err, doc) {
+    });
 
-        if (!err) {
-
-          res.send(doc);
-        }
-        else {
-
-          res.send('{"success":false}');
-        }
-      });
-    }
-    else {
-
-      res.send('{"success":false}');
-    }
+  }else{
   
-  });
+    doc.set(req.body);  
+    console.log('creando: ',doc);
+    doc.save(resultSave);
+  }
 
 };
+
+
 
 exports.GetListMovies = function ( req, res) {
 

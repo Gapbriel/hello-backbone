@@ -10,13 +10,7 @@ define([
 		
 		var MovieListView = Backbone.View.extend({
 			
-			render:function(page){
-
-
-				if( page === undefined)
-					currentPage = 1;
-				else
-					currentPage = page;
+			render:function(){
 
 	            this.TableMovie();
 				
